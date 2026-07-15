@@ -254,20 +254,13 @@ export default function HomePage() {
       ═══════════════════════════════════════════════ */}
       <section className="py-24 px-6 sm:px-8 bg-[#f0fbf5]">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+          <div className="flex flex-col items-center text-center gap-4 mb-12">
             <div className="space-y-2">
-              <p className="text-emerald-600 text-sm font-bold uppercase tracking-widest">Handpicked for You</p>
               <h2 className="text-4xl font-extrabold text-[#01452c]">Featured Houses</h2>
-              <p className="text-[#2a6650]/70 max-w-lg">
+              <p className="text-[#2a6650]/70 max-w-xl mx-auto">
                 Top-rated, verified houses that students love. No login needed to browse.
               </p>
             </div>
-            <Link
-              href="/houses"
-              className="inline-flex items-center gap-2 text-[#01452c] font-semibold hover:text-emerald-600 transition-colors text-sm"
-            >
-              View all houses <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -337,7 +330,6 @@ export default function HomePage() {
       <section id="how-it-works" className="py-24 px-6 sm:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-3">
-            <p className="text-emerald-600 text-sm font-bold uppercase tracking-widest">Simple Process</p>
             <h2 className="text-4xl font-extrabold text-[#01452c]">How MUST HOMES Works</h2>
             <p className="text-[#2a6650]/70 max-w-xl mx-auto text-lg">
               You can browse everything for free. Login is only needed when you&apos;re ready to book or contact a landlord.
@@ -368,7 +360,6 @@ export default function HomePage() {
       <section id="features" className="py-24 px-6 sm:px-8 bg-[#f0fbf5]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-3">
-            <p className="text-emerald-600 text-sm font-bold uppercase tracking-widest">Why Students Love Us</p>
             <h2 className="text-4xl font-extrabold text-[#01452c]">Everything You Need</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -397,7 +388,6 @@ export default function HomePage() {
         />
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-14 space-y-3">
-            <p className="text-emerald-400 text-sm font-bold uppercase tracking-widest">Student Stories</p>
             <h2 className="text-4xl font-extrabold text-white">What Our Students Say</h2>
             <p className="text-white/50 max-w-xl mx-auto">
               Thousands of MUST students found their homes here. Here&apos;s what they think.
