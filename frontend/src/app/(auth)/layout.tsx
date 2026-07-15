@@ -48,15 +48,6 @@ export default function AuthLayout({
           </div>
         </div>
 
-        {/* Second image — bottom left of collage area */}
-        <div className="absolute top-[42%] left-[30%] w-44 h-52 rounded-2xl overflow-hidden shadow-2xl -rotate-6 bg-white p-1.5 z-10 pointer-events-none">
-          <img
-            src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&q=80"
-            alt="Happy Students"
-            className="w-full h-full object-cover rounded-xl"
-          />
-        </div>
-
         {/* Text — bottom half, fully visible */}
         <div className="absolute bottom-0 left-0 w-full px-12 xl:px-16 pb-16 z-20">
           <h1 className="text-5xl xl:text-6xl font-bold text-slate-900 leading-[1.1] mb-5 tracking-tight">
