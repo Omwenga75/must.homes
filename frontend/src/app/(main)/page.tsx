@@ -429,6 +429,21 @@ export default function HomePage() {
 
 
       {/* ═══════════════════════════════════════════════
+           CTA
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 sm:px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-[#01452c]">
+            Ready to Find Your Room?
+          </h2>
+          <p className="text-[#2a6650]/70 text-lg max-w-xl mx-auto">
+            Browse freely. Login only when you&apos;re ready to book or contact a landlord.
+            It only takes 30 seconds to create a free account.
+          </p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
            CONTACT
       ═══════════════════════════════════════════════ */}
       <section id="contact" className="py-16 px-6 sm:px-8 bg-[#f0fbf5] border-t border-[#01452c]/10">
