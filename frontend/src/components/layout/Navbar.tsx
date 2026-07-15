@@ -49,12 +49,6 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <Link
             href="/login"
-            className="px-5 py-2 text-sm font-semibold text-[#01452c] hover:bg-[#e8f7f2] rounded-xl transition-colors"
-          >
-            Sign In
-          </Link>
-          <Link
-            href="/login"
             className="px-5 py-2 text-sm font-semibold bg-[#01452c] hover:bg-[#023120] text-white rounded-xl shadow-md shadow-[#01452c]/20 transition-all hover:scale-105 active:scale-95"
           >
             Get Started
@@ -84,12 +78,6 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="pt-3 flex flex-col gap-2">
-            <Link
-              href="/login"
-              className="block text-center px-4 py-2.5 rounded-xl text-sm font-semibold border border-[#01452c]/20 text-[#01452c] hover:bg-[#e8f7f2] transition-colors"
-            >
-              Sign In
-            </Link>
             <Link
               href="/login"
               className="block text-center px-4 py-2.5 rounded-xl text-sm font-semibold bg-[#01452c] text-white"
