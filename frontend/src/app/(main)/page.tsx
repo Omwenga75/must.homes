@@ -165,7 +165,7 @@ export default function HomePage() {
       <section className="relative min-h-[95vh] flex items-center justify-center pt-20 pb-32">
         {/* Dynamic Background Image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('/hero_bg.jpg')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
+          <div className="absolute inset-0 bg-[url('/hero_bg.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
           {/* Lighter overlay so the image is clearly visible */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#022c22]/50 via-[#022c22]/30 to-[#022c22]/60" />
         </div>
@@ -193,38 +193,7 @@ export default function HomePage() {
             <span className="text-white"> No middlemen. No hidden fees.</span>
           </p>
 
-          {/* Search / Action Card (Glassmorphism) */}
-          <div className="w-full max-w-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-2 sm:p-3 rounded-3xl sm:rounded-full shadow-2xl flex flex-col sm:flex-row items-center gap-3">
-            <div className="flex-1 w-full flex items-center bg-white/5 rounded-2xl sm:rounded-full px-6 py-4 border border-white/10">
-              <MapPin className="w-5 h-5 text-emerald-400 mr-3 flex-shrink-0" />
-              <input 
-                type="text" 
-                placeholder="Search estates, budget, or amenities..." 
-                className="w-full bg-transparent border-none text-white placeholder:text-white/50 focus:outline-none text-lg"
-              />
-            </div>
-            <Link
-              href="/houses"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white px-8 py-4 rounded-2xl sm:rounded-full font-bold text-lg shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95 whitespace-nowrap"
-            >
-              Explore Houses
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
 
-          {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 mt-12">
-            {[
-              { label: "Verified Listings", icon: Shield },
-              { label: "500+ Houses", icon: Building2 },
-              { label: "4.8★ Rated", icon: Star },
-            ].map((stat, i) => (
-              <div key={i} className="flex items-center gap-2 text-white/80 font-medium">
-                <stat.icon className="w-4 h-4 text-emerald-400" />
-                {stat.label}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
