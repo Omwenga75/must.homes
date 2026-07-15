@@ -91,8 +91,7 @@ export default function AuthLayout({
               Awaits
             </h2>
             <p className="text-white/60 text-lg leading-relaxed mb-10 max-w-md">
-              Discover verified, affordable accommodation near Murang&apos;a
-              University of Technology. No middlemen, no hidden fees.
+              Discover verified, affordable accommodation near Meru University of Science and Technology. No middlemen, no hidden fees.
             </p>
           </motion.div>
 

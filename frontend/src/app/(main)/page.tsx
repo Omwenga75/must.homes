@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import {
   Shield,
@@ -198,7 +198,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-lg sm:text-xl text-white/75 max-w-lg leading-relaxed">
-              Browse 500+ verified, affordable student homes near Murang&apos;a University of Technology.
+              Browse 500+ verified, affordable student homes near Meru University of Science and Technology.
               No middlemen. No hidden fees. No login needed to explore.
             </p>
 
@@ -501,7 +501,7 @@ export default function HomePage() {
             MUST HOMES
           </div>
           <p className="text-sm text-center">
-            &copy; {new Date().getFullYear()} Murang&apos;a University of Technology Student Housing Platform.
+            &copy; {new Date().getFullYear()} Meru University of Science and Technology Student Housing Platform.
           </p>
           <div className="flex items-center gap-6 text-sm">
             <Link href="/houses" className="hover:text-white transition-colors">Houses</Link>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "MUST HOMES — Student Housing Platform",
-  description: "Find verified, affordable student accommodation near Murang'a University of Technology. Browse 500+ listings with no middlemen and no hidden fees.",
+  description: "Find verified, affordable student accommodation near Meru University of Science and Technology. Browse 500+ listings with no middlemen and no hidden fees.",
 };
 
 
