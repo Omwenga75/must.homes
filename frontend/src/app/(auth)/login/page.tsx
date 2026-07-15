@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import api from "@/lib/api";
 
 const loginSchema = z.object({
   email: z
@@ -65,11 +66,35 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginForm) => {
     setIsLoading(true);
     try {
-      await new Promise((res) => setTimeout(res, 1500));
+      const res = await api.post("/auth/login", {
+        email: data.email,
+        password: data.password,
+        rememberMe: data.rememberMe ?? false,
+      });
+
+      const { accessToken, user } = res.data;
+
+      if (accessToken) {
+        localStorage.setItem("accessToken", accessToken);
+      }
+      if (user) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+
       toast.success("Welcome back! Redirecting...");
-      router.push("/houses");
-    } catch {
-      toast.error("Invalid email or password. Please try again.");
+
+      // Redirect based on role
+      if (user?.role === "ADMIN") {
+        router.push("/admin");
+      } else {
+        router.push("/houses");
+      }
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      const msg =
+        error?.response?.data?.message ||
+        "Invalid email or password. Please try again.";
+      toast.error(msg);
     } finally {
       setIsLoading(false);
     }

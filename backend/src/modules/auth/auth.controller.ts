@@ -46,6 +46,33 @@ export class AuthController {
     return this.authService.register(dto);
   }
 
+  // ─── SEED ADMIN ─────────────────────────────
+  @Public()
+  @Post('seed-admin')
+  async seedAdmin() {
+    const { PrismaClient, Role } = require('@prisma/client');
+    const bcrypt = require('bcryptjs');
+    const prisma = new PrismaClient();
+    const email = 'admin@must.homes';
+    const password = 'AdminPassword123!';
+    const passwordHash = await bcrypt.hash(password, 12);
+
+    const admin = await prisma.user.upsert({
+      where: { email },
+      update: { role: Role.ADMIN, isVerified: true, isActive: true },
+      create: {
+        email,
+        firstName: 'System',
+        lastName: 'Admin',
+        passwordHash,
+        role: Role.ADMIN,
+        isVerified: true,
+        isActive: true,
+      },
+    });
+    return { message: 'Admin seeded', email: admin.email, password };
+  }
+
   // ─── VERIFY EMAIL ────────────────────────────
   @Public()
   @Post('verify-email')
