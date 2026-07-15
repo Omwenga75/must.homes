@@ -83,9 +83,8 @@ export default function LoginPage() {
       className="space-y-6"
     >
       {/* Header */}
-      <motion.div variants={itemVariants} className="space-y-1">
-        <h1 className="text-2xl font-bold text-[#01452c]">Log into MUST HOMES</h1>
-        <p className="text-sm text-[#2a6650]/70">Welcome back — enter your details below.</p>
+      <motion.div variants={itemVariants} className="space-y-1 text-center">
+        <h1 className="text-2xl font-bold text-[#01452c]">Login</h1>
       </motion.div>
 
       {/* Form */}
