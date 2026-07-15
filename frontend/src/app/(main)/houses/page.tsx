@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -44,7 +44,7 @@ const houses = [
     reviews: 18,
     amenities: ["water", "electricity"],
     tag: "Budget Friendly",
-    tagColor: "bg-blue-500",
+    tagColor: "bg-emerald-500",
     image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80",
   },
   {
@@ -58,7 +58,7 @@ const houses = [
     reviews: 11,
     amenities: ["wifi", "water", "electricity", "parking"],
     tag: "Verified",
-    tagColor: "bg-purple-500",
+    tagColor: "bg-emerald-500",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80",
   },
   {
@@ -72,7 +72,7 @@ const houses = [
     reviews: 9,
     amenities: ["wifi", "water", "electricity", "parking"],
     tag: "New",
-    tagColor: "bg-orange-500",
+    tagColor: "bg-emerald-500",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80",
   },
   {
@@ -86,7 +86,7 @@ const houses = [
     reviews: 34,
     amenities: ["water", "electricity"],
     tag: "Budget Friendly",
-    tagColor: "bg-blue-500",
+    tagColor: "bg-emerald-500",
     image: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80",
   },
   {
@@ -100,7 +100,7 @@ const houses = [
     reviews: 7,
     amenities: ["wifi", "water", "electricity", "parking"],
     tag: "Premium",
-    tagColor: "bg-yellow-500",
+    tagColor: "bg-emerald-500",
     image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80",
   },
   {
@@ -114,7 +114,7 @@ const houses = [
     reviews: 12,
     amenities: ["water", "electricity"],
     tag: "Cosy",
-    tagColor: "bg-pink-500",
+    tagColor: "bg-emerald-500",
     image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80",
   },
   {
@@ -128,7 +128,7 @@ const houses = [
     reviews: 19,
     amenities: ["wifi", "water", "electricity"],
     tag: "Great Value",
-    tagColor: "bg-teal-500",
+    tagColor: "bg-emerald-500",
     image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80",
   },
   {
@@ -142,7 +142,7 @@ const houses = [
     reviews: 5,
     amenities: ["wifi", "water", "electricity"],
     tag: "All Inclusive",
-    tagColor: "bg-indigo-500",
+    tagColor: "bg-emerald-500",
     image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80",
   },
 ];

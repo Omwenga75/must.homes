@@ -84,19 +84,19 @@ export default function LoginPage() {
     >
       {/* Header */}
       <motion.div variants={itemVariants} className="space-y-1">
-        <h1 className="text-2xl font-bold text-slate-900">Log into MUST HOMES</h1>
-        <p className="text-sm text-slate-500">Welcome back — enter your details below.</p>
+        <h1 className="text-2xl font-bold text-[#01452c]">Log into MUST HOMES</h1>
+        <p className="text-sm text-[#2a6650]/70">Welcome back — enter your details below.</p>
       </motion.div>
 
       {/* Form */}
       <motion.form variants={itemVariants} onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Email */}
         <div className="space-y-1.5">
-          <Label htmlFor="email" className="text-sm font-medium text-slate-700">
+          <Label htmlFor="email" className="text-sm font-medium text-[#01452c]">
             Email Address
           </Label>
           <div className="relative">
-            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
             <Input
               id="email"
               type="email"
@@ -104,7 +104,7 @@ export default function LoginPage() {
               autoComplete="email"
               {...register("email")}
               className={cn(
-                "pl-10 h-12 bg-slate-50 border-slate-200 rounded-xl text-sm transition-all focus:ring-2 focus:ring-[#1877F2]/30 focus:border-[#1877F2]",
+                "pl-10 h-12 bg-[#f0fbf5] border-emerald-100 rounded-xl text-sm transition-all focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500",
                 errors.email && "border-red-400 focus:ring-red-400/30 focus:border-red-400"
               )}
             />
@@ -126,15 +126,15 @@ export default function LoginPage() {
         {/* Password */}
         <div className="space-y-1.5">
           <div className="flex items-center justify-between">
-            <Label htmlFor="password" className="text-sm font-medium text-slate-700">
+            <Label htmlFor="password" className="text-sm font-medium text-[#01452c]">
               Password
             </Label>
-            <Link href="/forgot-password" className="text-xs text-[#1877F2] hover:underline font-medium">
+            <Link href="/forgot-password" className="text-xs text-emerald-600 hover:underline font-medium">
               Forgot password?
             </Link>
           </div>
           <div className="relative">
-            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
             <Input
               id="password"
               type={showPassword ? "text" : "password"}
@@ -142,14 +142,14 @@ export default function LoginPage() {
               autoComplete="current-password"
               {...register("password")}
               className={cn(
-                "pl-10 pr-12 h-12 bg-slate-50 border-slate-200 rounded-xl text-sm transition-all focus:ring-2 focus:ring-[#1877F2]/30 focus:border-[#1877F2]",
+                "pl-10 pr-12 h-12 bg-[#f0fbf5] border-emerald-100 rounded-xl text-sm transition-all focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500",
                 errors.password && "border-red-400 focus:ring-red-400/30 focus:border-red-400"
               )}
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-emerald-400 hover:text-emerald-600 transition-colors"
             >
               {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>
@@ -174,9 +174,9 @@ export default function LoginPage() {
             id="rememberMe"
             type="checkbox"
             {...register("rememberMe")}
-            className="w-4 h-4 rounded border-slate-300 text-[#1877F2] focus:ring-[#1877F2] cursor-pointer accent-[#1877F2]"
+            className="w-4 h-4 rounded border-emerald-200 text-[#01452c] focus:ring-emerald-500 cursor-pointer accent-[#01452c]"
           />
-          <Label htmlFor="rememberMe" className="text-sm text-slate-600 cursor-pointer select-none">
+          <Label htmlFor="rememberMe" className="text-sm text-[#2a6650]/70 cursor-pointer select-none">
             Keep me signed in for 30 days
           </Label>
         </div>
@@ -185,7 +185,7 @@ export default function LoginPage() {
         <Button
           type="submit"
           disabled={isLoading}
-          className="w-full h-12 bg-[#1877F2] hover:bg-[#166FE5] text-white font-bold rounded-xl shadow-md shadow-blue-500/20 transition-all duration-200 text-base"
+          className="w-full h-12 bg-[#01452c] hover:bg-[#023120] text-white font-bold rounded-xl shadow-md shadow-emerald-900/20 transition-all duration-200 text-base"
         >
           {isLoading ? (
             <span className="flex items-center gap-2">
@@ -204,10 +204,10 @@ export default function LoginPage() {
       {/* Divider */}
       <motion.div variants={itemVariants} className="relative">
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t border-slate-200" />
+          <div className="w-full border-t border-emerald-100" />
         </div>
         <div className="relative flex justify-center text-xs">
-          <span className="bg-white px-3 text-slate-400">or</span>
+          <span className="bg-white px-3 text-[#2a6650]/50">or</span>
         </div>
       </motion.div>
 
@@ -215,17 +215,17 @@ export default function LoginPage() {
       <motion.div variants={itemVariants}>
         <Link
           href="/register"
-          className="flex items-center justify-center w-full h-12 border-2 border-[#42b72a] text-[#42b72a] hover:bg-[#42b72a] hover:text-white font-bold rounded-xl transition-all duration-200 text-sm"
+          className="flex items-center justify-center w-full h-12 border-2 border-[#01452c] text-[#01452c] hover:bg-[#01452c] hover:text-white font-bold rounded-xl transition-all duration-200 text-sm"
         >
           Create new account
         </Link>
       </motion.div>
 
-      <motion.p variants={itemVariants} className="text-center text-xs text-slate-400">
+      <motion.p variants={itemVariants} className="text-center text-xs text-[#2a6650]/50">
         By continuing, you agree to our{" "}
-        <Link href="/terms" className="underline hover:text-slate-600">Terms</Link>{" "}
+        <Link href="/terms" className="underline hover:text-[#01452c]">Terms</Link>{" "}
         &{" "}
-        <Link href="/privacy" className="underline hover:text-slate-600">Privacy Policy</Link>
+        <Link href="/privacy" className="underline hover:text-[#01452c]">Privacy Policy</Link>
       </motion.p>
     </motion.div>
   );
