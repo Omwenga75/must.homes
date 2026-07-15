@@ -301,9 +301,7 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {howItWorks.map((step, i) => (
               <div key={step.step} className="relative">
-                {i < howItWorks.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-[calc(100%-12px)] w-6 border-t-2 border-dashed border-[#01452c]/20 z-10" />
-                )}
+
                 <div className="bg-[#f0fbf5] rounded-3xl p-8 h-full space-y-4 border border-[#01452c]/8 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-900/5 transition-all">
                   <div className="w-14 h-14 rounded-2xl bg-[#01452c] text-white text-xl font-extrabold flex items-center justify-center">
                     {step.step}
