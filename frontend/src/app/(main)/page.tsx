@@ -166,8 +166,8 @@ export default function HomePage() {
         {/* Dynamic Background Image */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[url('/hero_bg.jpg')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
-          {/* Advanced Gradient Overlay for premium feel */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#022c22]/90 via-[#022c22]/70 to-[#022c22]/95 backdrop-blur-[2px]" />
+          {/* Lighter overlay so the image is clearly visible */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#022c22]/50 via-[#022c22]/30 to-[#022c22]/60" />
         </div>
 
         {/* Floating Abstract Shapes */}
