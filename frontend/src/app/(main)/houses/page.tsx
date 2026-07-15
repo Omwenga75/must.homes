@@ -246,17 +246,11 @@ export default function HousesPage() {
       {showBookingModal && <BookingModal onClose={() => setShowBookingModal(false)} />}
 
       {/* Page Header */}
-      <div className="bg-[#01452c] py-16 px-6 sm:px-8">
+      <div className="bg-[#01452c] py-10 px-6 sm:px-8">
         <div className="max-w-7xl mx-auto">
-          <p className="text-emerald-400 text-sm font-bold uppercase tracking-widest mb-3">
-            No Account Needed to Browse
-          </p>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
             Find Your Perfect Room
           </h1>
-          <p className="text-white/60 text-lg max-w-xl mb-8">
-            Browse {houses.length} verified student houses near MUST. Filter by price, estate, and amenities.
-          </p>
 
           {/* Search bar */}
           <div className="max-w-2xl flex gap-3">
