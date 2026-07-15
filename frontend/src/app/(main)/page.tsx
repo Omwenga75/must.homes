@@ -165,7 +165,7 @@ export default function HomePage() {
       <section className="relative min-h-[95vh] flex items-center justify-center pt-20 pb-32">
         {/* Dynamic Background Image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('/hero_bgs.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
+          <div className="absolute inset-0 bg-[url('/hero_bg.jpg')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
           {/* Lighter overlay so the image is clearly visible */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#022c22]/50 via-[#022c22]/30 to-[#022c22]/60" />
         </div>
