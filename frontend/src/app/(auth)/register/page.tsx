@@ -96,7 +96,6 @@ export default function RegisterPage() {
       {/* Header */}
       <motion.div variants={itemVariants} className="space-y-1 text-center">
         <h1 className="text-2xl font-bold text-[#01452c]">Create Account</h1>
-        <p className="text-sm text-[#2a6650]/70">Join MUST HOMES to find your perfect room.</p>
       </motion.div>
 
       {/* Form */}

@@ -53,7 +53,7 @@ export default function AuthLayout({
         {/* Text — bottom half, fully visible */}
         <div className="absolute bottom-0 left-0 w-full px-12 xl:px-16 pb-16 z-20">
           <h1 className="text-5xl xl:text-6xl font-bold text-[#01452c] leading-[1.1] mb-5 tracking-tight">
-            Find the <br />
+            Find your <br />
             <span className="text-emerald-500">perfect room</span> <br />
             near campus.
           </h1>
