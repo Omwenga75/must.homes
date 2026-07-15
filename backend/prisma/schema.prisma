@@ -1,0 +1,203 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  STUDENT
+  ADMIN
+  LANDLORD
+  CARETAKER
+}
+
+enum RoomType {
+  SINGLE_ROOM
+  BEDSITTER
+  ONE_BEDROOM
+  TWO_BEDROOM
+}
+
+enum Availability {
+  VACANT
+  OCCUPIED
+  RESERVED
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  EXPIRED
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+model User {
+  id             String         @id @default(uuid())
+  firstName      String
+  lastName       String
+  email          String         @unique
+  phone          String?
+  password       String
+  role           Role           @default(STUDENT)
+  isVerified     Boolean        @default(false)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  // Relations
+  bookings       Booking[]
+  reviews        Review[]
+  favorites      Favorite[]
+  notifications  Notification[]
+  refreshTokens  RefreshToken[]
+  otps           Otp[]
+  sessions       Session[]
+  auditLogs      AuditLog[]
+}
+
+model Estate {
+  id              String   @id @default(uuid())
+  name            String   @unique
+  description     String?
+  latitude        Float?
+  longitude       Float?
+  averageDistance String?
+  
+  houses          House[]
+}
+
+model House {
+  id                  String       @id @default(uuid())
+  title               String
+  estateId            String
+  estate              Estate       @relation(fields: [estateId], references: [id])
+  caretakerName       String?
+  caretakerPhone      String?
+  caretakerWhatsApp   String?
+  description         String?
+  price               Float
+  deposit             Float
+  roomType            RoomType
+  size                String?      // e.g. "10x10 sqft"
+  amenities           String[]     // e.g. ["WiFi", "Water", "Electricity"]
+  photos              String[]
+  videoUrl            String?
+  latitude            Float?
+  longitude           Float?
+  distanceMainGate    Float?       // in meters or km
+  distanceSchool      Float?
+  availability        Availability @default(VACANT)
+  featured            Boolean      @default(false)
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+
+  bookings            Booking[]
+  reviews             Review[]
+  favorites           Favorite[]
+}
+
+model Booking {
+  id             String        @id @default(uuid())
+  bookingNumber  String        @unique
+  userId         String
+  user           User          @relation(fields: [userId], references: [id])
+  houseId        String
+  house          House         @relation(fields: [houseId], references: [id])
+  status         BookingStatus @default(PENDING)
+  expiresAt      DateTime
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  payment        Payment?
+}
+
+model Payment {
+  id             String        @id @default(uuid())
+  transactionRef String        @unique // e.g. M-Pesa receipt number
+  bookingId      String        @unique
+  booking        Booking       @relation(fields: [bookingId], references: [id])
+  amount         Float
+  status         PaymentStatus @default(PENDING)
+  paymentMethod  String        @default("MPESA")
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  houseId   String
+  house     House    @relation(fields: [houseId], references: [id])
+  rating    Int      @default(5)
+  comments  String?
+  photos    String[]
+  createdAt DateTime @default(now())
+}
+
+model Favorite {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  houseId   String
+  house     House    @relation(fields: [houseId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, houseId])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Otp {
+  id        String   @id @default(uuid())
+  code      String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  token     String   @unique
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  action    String
+  details   String?
+  createdAt DateTime @default(now())
+}

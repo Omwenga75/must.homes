@@ -1,0 +1,53 @@
+import {
+  Injectable,
+  OnModuleInit,
+  OnModuleDestroy,
+  Logger,
+} from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
+
+@Injectable()
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
+  private readonly logger = new Logger(PrismaService.name);
+
+  constructor() {
+    super({
+      log: [
+        { emit: 'event', level: 'query' },
+        { emit: 'stdout', level: 'info' },
+        { emit: 'stdout', level: 'warn' },
+        { emit: 'stdout', level: 'error' },
+      ],
+    });
+  }
+
+  async onModuleInit(): Promise<void> {
+    try {
+      await this.$connect();
+      this.logger.log('Database connection established');
+    } catch (error) {
+      this.logger.error('Failed to connect to database', error);
+      throw error;
+    }
+  }
+
+  async onModuleDestroy(): Promise<void> {
+    await this.$disconnect();
+    this.logger.log('Database connection closed');
+  }
+
+  async cleanDatabase(): Promise<void> {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('cleanDatabase is not allowed in production');
+    }
+    const tableNames = Object.keys(this).filter(
+      (key) => !key.startsWith('_') && !key.startsWith('$'),
+    );
+    for (const tableName of tableNames) {
+      await (this as any)[tableName].deleteMany();
+    }
+  }
+}
