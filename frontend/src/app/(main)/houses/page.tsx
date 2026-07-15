@@ -287,7 +287,7 @@ export default function HousesPage() {
       {/* Filters Panel */}
       {showFilters && (
         <div className="bg-white border-b border-[#01452c]/10 px-6 sm:px-8 py-6 shadow-sm">
-          <div className="max-w-7xl mx-auto flex flex-wrap gap-6 items-end">
+          <div className="max-w-7xl mx-auto flex flex-wrap gap-6 items-end justify-center">
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-widest text-[#01452c]/50">Estate</label>
               <div className="relative">
