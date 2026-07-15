@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 interface JWTPayload {
   sub: string;
   email: string;
-  role: "student" | "admin";
+  role: "USER" | "ADMIN" | "student" | "admin";
   firstName: string;
   lastName: string;
   isVerified: boolean;
@@ -40,6 +40,7 @@ export function middleware(request: NextRequest) {
   // Check protected routes
   const isStudentRoute =
     pathname.startsWith("/student") ||
+    pathname.startsWith("/houses") ||
     pathname.startsWith("/(dashboard)/student");
   const isAdminRoute =
     pathname.startsWith("/admin") ||
@@ -77,10 +78,12 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
+  const userRole = payload.role?.toUpperCase() || "";
+
   // Admin route — require admin role
-  if (isAdminRoute && payload.role !== "admin") {
+  if (isAdminRoute && userRole !== "ADMIN") {
     // Redirect non-admin users to student dashboard
-    return NextResponse.redirect(new URL("/student", request.url));
+    return NextResponse.redirect(new URL("/houses", request.url));
   }
 
   // Student route — admin can also access (optional: restrict if needed)
