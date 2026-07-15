@@ -165,13 +165,7 @@ export default function HomePage() {
       <section className="relative min-h-[95vh] flex items-center justify-center pt-20 pb-32">
         {/* Dynamic Background Image */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070"
-            alt="University Campus"
-            fill
-            className="object-cover object-center scale-105 animate-pulse-slow"
-            priority
-          />
+          <div className="absolute inset-0 bg-[url('/hero_bg.jpg')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
           {/* Advanced Gradient Overlay for premium feel */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#022c22]/90 via-[#022c22]/70 to-[#022c22]/95 backdrop-blur-[2px]" />
         </div>
