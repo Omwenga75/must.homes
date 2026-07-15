@@ -13,7 +13,6 @@ import {
   EyeOff,
   Mail,
   Lock,
-  User,
   Loader2,
   ArrowRight,
 } from "lucide-react";
@@ -24,9 +23,6 @@ import { cn } from "@/lib/utils";
 
 const registerSchema = z
   .object({
-    fullName: z
-      .string()
-      .min(2, "Full name must be at least 2 characters"),
     email: z
       .string()
       .min(1, "Email is required")
@@ -100,39 +96,6 @@ export default function RegisterPage() {
 
       {/* Form */}
       <motion.form variants={itemVariants} onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Full Name */}
-        <div className="space-y-1.5">
-          <Label htmlFor="fullName" className="text-sm font-medium text-[#01452c]">
-            Full Name
-          </Label>
-          <div className="relative">
-            <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
-            <Input
-              id="fullName"
-              type="text"
-              placeholder="John Doe"
-              autoComplete="name"
-              {...register("fullName")}
-              className={cn(
-                "pl-10 h-12 bg-[#f0fbf5] border-emerald-100 rounded-xl text-sm transition-all focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500",
-                errors.fullName && "border-red-400 focus:ring-red-400/30 focus:border-red-400"
-              )}
-            />
-          </div>
-          <AnimatePresence>
-            {errors.fullName && (
-              <motion.p
-                initial={{ opacity: 0, y: -4 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                className="text-xs text-red-500"
-              >
-                {errors.fullName.message}
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </div>
-
         {/* Email */}
         <div className="space-y-1.5">
           <Label htmlFor="email" className="text-sm font-medium text-[#01452c]">
