@@ -184,15 +184,6 @@ export default function HomePage() {
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 flex flex-col items-center text-center">
           
-          {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2.5 bg-white/10 border border-white/20 text-white/90 text-xs sm:text-sm font-bold uppercase tracking-widest px-5 py-2.5 rounded-full backdrop-blur-md mb-8 shadow-2xl shadow-emerald-900/50 hover:bg-white/20 transition-colors cursor-default">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            No Account Required to Browse
-          </div>
-
           {/* Hero Headline */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.1] tracking-tighter mb-6 max-w-5xl">
             Find Your <br className="sm:hidden" />
@@ -436,38 +427,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-           CTA
-      ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-8 bg-white">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <div className="w-16 h-16 rounded-3xl bg-[#01452c] flex items-center justify-center mx-auto mb-2">
-            <Home className="w-8 h-8 text-white" />
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-[#01452c]">
-            Ready to Find Your Room?
-          </h2>
-          <p className="text-[#2a6650]/70 text-lg max-w-xl mx-auto">
-            Browse freely. Login only when you&apos;re ready to book or contact a landlord.
-            It only takes 30 seconds to create a free account.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Link
-              href="/houses"
-              className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-10 py-4 rounded-2xl font-bold text-base shadow-2xl shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95"
-            >
-              Browse Houses — Free
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/login"
-              className="inline-flex items-center gap-2 bg-[#01452c] hover:bg-[#023120] text-white px-10 py-4 rounded-2xl font-bold text-base shadow-2xl shadow-[#01452c]/20 transition-all hover:scale-105 active:scale-95"
-            >
-              Create Free Account
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════════
            CONTACT
