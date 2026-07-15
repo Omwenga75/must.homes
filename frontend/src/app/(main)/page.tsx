@@ -185,12 +185,12 @@ export default function HomePage() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 flex flex-col items-center text-center">
           
           {/* Hero Headline */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.1] tracking-tighter mb-6 max-w-5xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tighter mb-6 max-w-5xl drop-shadow-sm">
             Find Your <br className="sm:hidden" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 drop-shadow-lg">
-              Dream Room
-            </span>
-            <br /> Near MUST
+            Dream Room
+            {" "}
+            <br className="hidden sm:block" />
+            Near MUST
           </h1>
 
           {/* Subtitle */}
