@@ -162,7 +162,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════
            HERO SECTION
       ═══════════════════════════════════════════════ */}
-      <section className="relative min-h-[60vh] flex items-center justify-center pt-20 pb-20">
+      <section className="relative flex items-center justify-center pt-28 pb-12">
         {/* Dynamic Background Image */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[url('/hero_bg.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
@@ -188,7 +188,7 @@ export default function HomePage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl md:text-2xl text-emerald-50/80 max-w-2xl leading-relaxed mb-12 font-medium">
+          <p className="text-lg sm:text-xl md:text-2xl text-emerald-50/80 max-w-2xl leading-relaxed mb-0 font-medium">
             Browse 500+ verified, affordable student homes near Meru University. 
             <span className="text-white"> No middlemen. No hidden fees.</span>
           </p>
