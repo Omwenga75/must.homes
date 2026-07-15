@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Shield,
@@ -157,85 +157,88 @@ const featuredHouses = [
 
 export default function HomePage() {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-[#fafafa]">
 
       {/* ═══════════════════════════════════════════════
            HERO SECTION
       ═══════════════════════════════════════════════ */}
-      <section className="relative min-h-[92vh] flex items-center">
-        {/* Background image with overlay */}
+      <section className="relative min-h-[95vh] flex items-center justify-center pt-20 pb-32">
+        {/* Dynamic Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/hero_bg.png"
-            alt="MUST University Campus"
+            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070"
+            alt="University Campus"
             fill
-            className="object-cover"
+            className="object-cover object-center scale-105 animate-pulse-slow"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#01452c]/95 via-[#01452c]/80 to-[#01452c]/30" />
+          {/* Advanced Gradient Overlay for premium feel */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#022c22]/90 via-[#022c22]/70 to-[#022c22]/95 backdrop-blur-[2px]" />
         </div>
 
-        {/* Floating pattern */}
-        <div className="absolute inset-0 z-0 opacity-5"
-          style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "32px 32px" }}
-        />
+        {/* Floating Abstract Shapes */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-emerald-500/20 blur-[120px]" />
+          <div className="absolute bottom-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-teal-500/20 blur-[120px]" />
+        </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 py-24 w-full">
-          <div className="max-w-2xl space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/90 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              No Account Required to Browse
-            </div>
-
-            {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight">
-              Find Your
-              <br />
-              <span className="text-emerald-400">Dream Room</span>
-              <br />
-              Near MUST
-            </h1>
-
-            <p className="text-lg sm:text-xl text-white/75 max-w-lg leading-relaxed">
-              Browse 500+ verified, affordable student homes near Meru University of Science and Technology.
-              No middlemen. No hidden fees. No login needed to explore.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Link
-                href="/houses"
-                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-2xl font-bold text-base shadow-2xl shadow-emerald-900/40 transition-all hover:scale-105 active:scale-95"
-              >
-                Browse Houses — It&apos;s Free
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="#how-it-works"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded-2xl font-bold text-base backdrop-blur-sm transition-all hover:scale-105 active:scale-95"
-              >
-                How It Works
-              </Link>
-            </div>
-
-            {/* Trust badges */}
-            <div className="flex items-center gap-6 pt-2 flex-wrap">
-              {["Verified Listings", "500+ Houses", "4.8★ Rated", "Free to Browse"].map((b) => (
-                <div key={b} className="flex items-center gap-2 text-white/70 text-sm">
-                  <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                  {b}
-                </div>
-              ))}
-            </div>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 flex flex-col items-center text-center">
+          
+          {/* Pill Badge */}
+          <div className="inline-flex items-center gap-2.5 bg-white/10 border border-white/20 text-white/90 text-xs sm:text-sm font-bold uppercase tracking-widest px-5 py-2.5 rounded-full backdrop-blur-md mb-8 shadow-2xl shadow-emerald-900/50 hover:bg-white/20 transition-colors cursor-default">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            No Account Required to Browse
           </div>
-        </div>
 
-        {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1">
-          <span className="text-white/40 text-xs uppercase tracking-widest">Scroll</span>
-          <div className="w-5 h-8 border-2 border-white/20 rounded-full flex justify-center pt-1.5">
-            <div className="w-1 h-2 bg-white/50 rounded-full animate-bounce" />
+          {/* Hero Headline */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.1] tracking-tighter mb-6 max-w-5xl">
+            Find Your <br className="sm:hidden" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 drop-shadow-lg">
+              Dream Room
+            </span>
+            <br /> Near MUST
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-lg sm:text-xl md:text-2xl text-emerald-50/80 max-w-2xl leading-relaxed mb-12 font-medium">
+            Browse 500+ verified, affordable student homes near Meru University. 
+            <span className="text-white"> No middlemen. No hidden fees.</span>
+          </p>
+
+          {/* Search / Action Card (Glassmorphism) */}
+          <div className="w-full max-w-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-2 sm:p-3 rounded-3xl sm:rounded-full shadow-2xl flex flex-col sm:flex-row items-center gap-3">
+            <div className="flex-1 w-full flex items-center bg-white/5 rounded-2xl sm:rounded-full px-6 py-4 border border-white/10">
+              <MapPin className="w-5 h-5 text-emerald-400 mr-3 flex-shrink-0" />
+              <input 
+                type="text" 
+                placeholder="Search estates, budget, or amenities..." 
+                className="w-full bg-transparent border-none text-white placeholder:text-white/50 focus:outline-none text-lg"
+              />
+            </div>
+            <Link
+              href="/houses"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white px-8 py-4 rounded-2xl sm:rounded-full font-bold text-lg shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95 whitespace-nowrap"
+            >
+              Explore Houses
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 mt-12">
+            {[
+              { label: "Verified Listings", icon: Shield },
+              { label: "500+ Houses", icon: Building2 },
+              { label: "4.8★ Rated", icon: Star },
+            ].map((stat, i) => (
+              <div key={i} className="flex items-center gap-2 text-white/80 font-medium">
+                <stat.icon className="w-4 h-4 text-emerald-400" />
+                {stat.label}
+              </div>
+            ))}
           </div>
         </div>
       </section>
