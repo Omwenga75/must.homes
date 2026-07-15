@@ -247,13 +247,13 @@ export default function HousesPage() {
 
       {/* Page Header */}
       <div className="bg-[#01452c] py-10 px-6 sm:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
             Find Your Perfect Room
           </h1>
 
           {/* Search bar */}
-          <div className="max-w-2xl flex gap-3">
+          <div className="w-full max-w-2xl flex gap-3">
             <div className="relative flex-1">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
               <input
