@@ -26,8 +26,6 @@ import api from "@/lib/api";
 
 const registerSchema = z
   .object({
-    firstName: z.string().min(1, "First name is required").max(50, "Max 50 characters"),
-    lastName: z.string().min(1, "Last name is required").max(50, "Max 50 characters"),
     email: z
       .string()
       .min(1, "Email is required")
@@ -40,11 +38,6 @@ const registerSchema = z
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#()_\-+=[\]{}|;:'",.<>?/\\`~])[A-Za-z\d@$!%*?&^#()_\-+=[\]{}|;:'",.<>?/\\`~]{8,}$/,
         "Password must contain uppercase, lowercase, number, and special character"
       ),
-    confirmPassword: z.string().min(1, "Confirm password is required"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
   });
 
 const otpSchema = z.object({
@@ -70,7 +63,6 @@ const itemVariants: Variants = {
 export default function RegisterPage() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState<"register" | "verify">("register");
   const [userId, setUserId] = useState<string | null>(null);
@@ -95,11 +87,11 @@ export default function RegisterPage() {
     setIsLoading(true);
     try {
       const res = await api.post("/auth/register", {
-        firstName: data.firstName,
-        lastName: data.lastName,
+        firstName: "Student",
+        lastName: "User",
         email: data.email,
         password: data.password,
-        confirmPassword: data.confirmPassword,
+        confirmPassword: data.password,
       });
 
       setUserId(res.data.userId);
@@ -215,69 +207,6 @@ export default function RegisterPage() {
       {/* Form */}
       <motion.form variants={itemVariants} onSubmit={handleSubmit(onRegister)} className="space-y-4">
         
-        {/* Name Fields */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <Label htmlFor="firstName" className="text-sm font-medium text-[#01452c]">
-              First Name
-            </Label>
-            <div className="relative">
-              <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
-              <Input
-                id="firstName"
-                placeholder="John"
-                {...register("firstName")}
-                className={cn(
-                  "pl-10 h-12 bg-[#f0fbf5] border-emerald-100 rounded-xl text-sm transition-all focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500",
-                  errors.firstName && "border-red-400 focus:ring-red-400/30 focus:border-red-400"
-                )}
-              />
-            </div>
-            <AnimatePresence>
-              {errors.firstName && (
-                <motion.p
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  className="text-xs text-red-500"
-                >
-                  {errors.firstName.message}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
-
-          <div className="space-y-1.5">
-            <Label htmlFor="lastName" className="text-sm font-medium text-[#01452c]">
-              Last Name
-            </Label>
-            <div className="relative">
-              <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
-              <Input
-                id="lastName"
-                placeholder="Doe"
-                {...register("lastName")}
-                className={cn(
-                  "pl-10 h-12 bg-[#f0fbf5] border-emerald-100 rounded-xl text-sm transition-all focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500",
-                  errors.lastName && "border-red-400 focus:ring-red-400/30 focus:border-red-400"
-                )}
-              />
-            </div>
-            <AnimatePresence>
-              {errors.lastName && (
-                <motion.p
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  className="text-xs text-red-500"
-                >
-                  {errors.lastName.message}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-
         {/* Email */}
         <div className="space-y-1.5">
           <Label htmlFor="email" className="text-sm font-medium text-[#01452c]">
@@ -346,46 +275,6 @@ export default function RegisterPage() {
                 className="text-xs text-red-500"
               >
                 {errors.password.message}
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Confirm Password */}
-        <div className="space-y-1.5">
-          <Label htmlFor="confirmPassword" className="text-sm font-medium text-[#01452c]">
-            Confirm Password
-          </Label>
-          <div className="relative">
-            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
-            <Input
-              id="confirmPassword"
-              type={showConfirmPassword ? "text" : "password"}
-              placeholder="Confirm your password"
-              autoComplete="new-password"
-              {...register("confirmPassword")}
-              className={cn(
-                "pl-10 pr-12 h-12 bg-[#f0fbf5] border-emerald-100 rounded-xl text-sm transition-all focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500",
-                errors.confirmPassword && "border-red-400 focus:ring-red-400/30 focus:border-red-400"
-              )}
-            />
-            <button
-              type="button"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-emerald-400 hover:text-emerald-600 transition-colors"
-            >
-              {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-            </button>
-          </div>
-          <AnimatePresence>
-            {errors.confirmPassword && (
-              <motion.p
-                initial={{ opacity: 0, y: -4 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                className="text-xs text-red-500"
-              >
-                {errors.confirmPassword.message}
               </motion.p>
             )}
           </AnimatePresence>
