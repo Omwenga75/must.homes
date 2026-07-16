@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Plus, Edit2, Trash2, Search, Filter } from "lucide-react";
+import { Plus, Edit2, Trash2, Search, Filter, X, Loader2, Save } from "lucide-react";
 import api from "@/lib/api";
+import { toast } from "sonner";
 
 interface Property {
   id: string;
@@ -14,10 +15,21 @@ interface Property {
   estate?: { name: string };
 }
 
+interface EditForm {
+  title: string;
+  price: string;
+  availability: string;
+}
+
 export default function PropertiesManagement() {
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+
+  // Edit modal state
+  const [editingProperty, setEditingProperty] = useState<Property | null>(null);
+  const [editForm, setEditForm] = useState<EditForm>({ title: "", price: "", availability: "" });
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     fetchProperties();
@@ -40,11 +52,50 @@ export default function PropertiesManagement() {
     if (confirm("Are you sure you want to delete this property?")) {
       try {
         await api.delete(`/houses/${id}`);
+        toast.success("Property deleted successfully");
         fetchProperties();
       } catch (error) {
         console.error("Failed to delete property", error);
-        alert("Failed to delete property. Check console for details.");
+        toast.error("Failed to delete property.");
       }
+    }
+  };
+
+  const openEdit = (property: Property) => {
+    setEditingProperty(property);
+    setEditForm({
+      title: property.title,
+      price: String(property.price),
+      availability: property.availability,
+    });
+  };
+
+  const closeEdit = () => {
+    setEditingProperty(null);
+    setEditForm({ title: "", price: "", availability: "" });
+  };
+
+  const handleSave = async () => {
+    if (!editingProperty) return;
+    if (!editForm.title.trim()) {
+      toast.error("Title cannot be empty");
+      return;
+    }
+    setSaving(true);
+    try {
+      await api.patch(`/houses/${editingProperty.id}`, {
+        title: editForm.title.trim(),
+        price: parseFloat(editForm.price),
+        availability: editForm.availability,
+      });
+      toast.success("Property updated successfully!");
+      closeEdit();
+      fetchProperties();
+    } catch (error) {
+      console.error("Failed to update property", error);
+      toast.error("Failed to update property. Please try again.");
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -139,12 +190,17 @@ export default function PropertiesManagement() {
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
-                        <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                        <button
+                          onClick={() => openEdit(property)}
+                          className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                          title="Edit property"
+                        >
                           <Edit2 className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleDelete(property.id)}
                           className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Delete property"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -157,6 +213,108 @@ export default function PropertiesManagement() {
           </table>
         </div>
       </div>
+
+      {/* ── Edit Modal ──────────────────────────────────────────── */}
+      {editingProperty && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={closeEdit}
+          />
+
+          {/* Modal */}
+          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md p-6 z-10">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-xl font-extrabold text-[#01452c]">Edit Property</h2>
+                <p className="text-xs text-slate-400 mt-0.5">Update property details</p>
+              </div>
+              <button
+                onClick={closeEdit}
+                className="p-2 rounded-xl hover:bg-slate-100 text-slate-500 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Form */}
+            <div className="space-y-4">
+              {/* Title */}
+              <div>
+                <label className="block text-sm font-semibold text-[#01452c] mb-1.5">
+                  House Title / Name
+                </label>
+                <input
+                  type="text"
+                  value={editForm.title}
+                  onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
+                  placeholder="e.g. Studio Room in Mwangaza"
+                  className="w-full px-4 py-3 border border-emerald-100 bg-[#f0fbf5] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all font-medium"
+                />
+              </div>
+
+              {/* Price */}
+              <div>
+                <label className="block text-sm font-semibold text-[#01452c] mb-1.5">
+                  Monthly Rent (KES)
+                </label>
+                <input
+                  type="number"
+                  value={editForm.price}
+                  onChange={(e) => setEditForm({ ...editForm, price: e.target.value })}
+                  placeholder="e.g. 8000"
+                  min={0}
+                  className="w-full px-4 py-3 border border-emerald-100 bg-[#f0fbf5] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all font-medium"
+                />
+              </div>
+
+              {/* Availability */}
+              <div>
+                <label className="block text-sm font-semibold text-[#01452c] mb-1.5">
+                  Availability
+                </label>
+                <select
+                  value={editForm.availability}
+                  onChange={(e) => setEditForm({ ...editForm, availability: e.target.value })}
+                  className="w-full px-4 py-3 border border-emerald-100 bg-[#f0fbf5] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all font-medium"
+                >
+                  <option value="VACANT">VACANT</option>
+                  <option value="OCCUPIED">OCCUPIED</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-3 mt-6">
+              <button
+                onClick={closeEdit}
+                className="flex-1 px-4 py-3 border-2 border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-colors text-sm"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSave}
+                disabled={saving}
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#01452c] hover:bg-[#023120] text-white font-bold rounded-xl transition-all text-sm shadow-md shadow-emerald-900/20 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {saving ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-4 h-4" />
+                    Save Changes
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
