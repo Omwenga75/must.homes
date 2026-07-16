@@ -45,13 +45,13 @@ export default function AuthLayout({
         {/* Centered 3D House Icon — between logo and text */}
         <div className="absolute left-0 right-[45%] top-[30%] -translate-y-1/2 flex items-center justify-center z-20">
           <div
-            className="w-36 h-36 rounded-full bg-white shadow-2xl flex items-center justify-center border border-emerald-50 animate-bounce"
+            className="w-28 h-28 rounded-full bg-white shadow-2xl flex items-center justify-center border border-emerald-50 animate-bounce"
             style={{ animationDuration: "3s" }}
           >
             <img
               src="/house-icon.png"
               alt="3D House"
-              className="w-28 h-28 object-contain"
+              className="w-20 h-20 object-contain"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 e.currentTarget.parentElement!.innerHTML = '<span style="font-size:4rem">🏠</span>';
