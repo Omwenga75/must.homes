@@ -50,6 +50,23 @@ export default function AuthLayout({
           </div>
         </div>
 
+        {/* Middle 3D House Icon */}
+        <div className="absolute top-[35%] left-12 xl:left-16 z-20 transform -translate-y-1/2">
+          {/* Using a placeholder for the uploaded 3D house icon. Save the image to public/house-icon.png */}
+          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-white/50 backdrop-blur-sm shadow-2xl flex items-center justify-center border border-white/60">
+            <img 
+              src="/house-icon.png" 
+              alt="3D House" 
+              className="w-16 h-16 sm:w-24 sm:h-24 object-contain"
+              onError={(e) => {
+                // Fallback to emoji if image is not placed in public folder yet
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.parentElement!.innerHTML = '<span class="text-5xl sm:text-7xl">🏠</span>';
+              }}
+            />
+          </div>
+        </div>
+
         {/* Text — bottom half, fully visible */}
         <div className="absolute bottom-0 left-0 w-full px-12 xl:px-16 pb-16 z-20">
           <h1 className="text-5xl xl:text-6xl font-bold text-[#01452c] leading-[1.1] mb-5 tracking-tight">
