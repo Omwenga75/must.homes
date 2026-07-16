@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Home, LayoutDashboard, Building, Calendar, Users, Settings, LogOut } from "lucide-react";
 
 const links = [
@@ -14,6 +14,14 @@ const links = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
+    document.cookie = "access_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    router.push("/login");
+  };
 
   return (
     <aside className="w-64 bg-white border-r border-[#01452c]/10 flex flex-col h-screen sticky top-0">
@@ -49,7 +57,10 @@ export default function Sidebar() {
       </div>
 
       <div className="p-4 border-t border-[#01452c]/10">
-        <button className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors">
+        <button 
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors"
+        >
           <LogOut className="w-5 h-5" />
           Logout
         </button>

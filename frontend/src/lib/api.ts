@@ -79,6 +79,7 @@ api.interceptors.response.use(
         if (newToken) {
           if (typeof window !== "undefined") {
             localStorage.setItem("accessToken", newToken);
+            document.cookie = `access_token=${newToken}; path=/; max-age=86400; SameSite=Lax`;
           }
           api.defaults.headers.common.Authorization = `Bearer ${newToken}`;
           if (originalRequest.headers) {
@@ -91,6 +92,7 @@ api.interceptors.response.use(
         processQueue(refreshError as AxiosError, null);
         if (typeof window !== "undefined") {
           localStorage.removeItem("accessToken");
+          document.cookie = "access_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
         }
         // Redirect to login
         if (typeof window !== "undefined") {

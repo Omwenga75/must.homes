@@ -36,10 +36,7 @@ export default function AuthLayout({
             />
           </div>
 
-          {/* Floating badge */}
-          <div className="absolute bottom-4 right-6 bg-[#01452c] text-white text-xs font-bold px-3 py-2 rounded-full shadow-xl z-20 flex items-center gap-1">
-            ✓ Verified
-          </div>
+
         </div>
 
         {/* Centered 3D House Icon — between logo and text */}

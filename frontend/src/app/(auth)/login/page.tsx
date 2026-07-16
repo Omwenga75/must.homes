@@ -76,6 +76,7 @@ export default function LoginPage() {
 
       if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
+        document.cookie = `access_token=${accessToken}; path=/; max-age=86400; SameSite=Lax`;
       }
       if (user) {
         localStorage.setItem("user", JSON.stringify(user));
