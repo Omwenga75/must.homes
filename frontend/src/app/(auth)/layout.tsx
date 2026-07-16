@@ -36,32 +36,25 @@ export default function AuthLayout({
             />
           </div>
 
-          {/* Floating Emoji 1 */}
-          <div
-            className="absolute top-6 left-4 w-14 h-14 rounded-full bg-white shadow-xl flex items-center justify-center text-2xl animate-bounce z-20"
-            style={{ animationDuration: "3s" }}
-          >
-            🏠
-          </div>
-
           {/* Floating badge */}
           <div className="absolute bottom-4 right-6 bg-[#01452c] text-white text-xs font-bold px-3 py-2 rounded-full shadow-xl z-20 flex items-center gap-1">
             ✓ Verified
           </div>
         </div>
 
-        {/* Middle 3D House Icon */}
-        <div className="absolute top-[35%] left-12 xl:left-16 z-20 transform -translate-y-1/2">
-          {/* Using a placeholder for the uploaded 3D house icon. Save the image to public/house-icon.png */}
-          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-white/50 backdrop-blur-sm shadow-2xl flex items-center justify-center border border-white/60">
-            <img 
-              src="/house-icon.png" 
-              alt="3D House" 
-              className="w-16 h-16 sm:w-24 sm:h-24 object-contain"
+        {/* Centered 3D House Icon — between logo and text */}
+        <div className="absolute left-0 right-[45%] top-[30%] -translate-y-1/2 flex items-center justify-center z-20">
+          <div
+            className="w-36 h-36 rounded-full bg-white shadow-2xl flex items-center justify-center border border-emerald-50 animate-bounce"
+            style={{ animationDuration: "3s" }}
+          >
+            <img
+              src="/house-icon.png"
+              alt="3D House"
+              className="w-28 h-28 object-contain"
               onError={(e) => {
-                // Fallback to emoji if image is not placed in public folder yet
                 e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement!.innerHTML = '<span class="text-5xl sm:text-7xl">🏠</span>';
+                e.currentTarget.parentElement!.innerHTML = '<span style="font-size:4rem">🏠</span>';
               }}
             />
           </div>
