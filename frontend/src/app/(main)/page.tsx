@@ -260,33 +260,19 @@ export default function HomePage() {
                 href="/items"
                 className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-[#01452c]/8 hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-2 transition-all duration-300"
               >
-                <div className="relative h-72 overflow-hidden">
+                <div className="h-72 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <span className={`absolute top-3 left-3 ${item.tagColor} text-white text-xs font-bold px-3 py-1.5 rounded-full`}>
-                    {item.tag}
-                  </span>
-                  <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur text-[#01452c] text-sm font-extrabold px-3 py-1.5 rounded-full">
-                    KES {item.price.toLocaleString()}
-                  </div>
                 </div>
-                <div className="p-5 space-y-3">
+                <div className="p-5">
                   <h3 className="font-bold text-[#01452c] text-base leading-snug">{item.title}</h3>
-                  <div className="flex items-center gap-1 text-[#2a6650]/60 text-sm">
+                  <div className="flex items-center gap-1 text-[#2a6650]/60 text-sm mt-2">
                     <Phone className="w-3.5 h-3.5" />
                     +254 712 345 678
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {item.tags.map((a) => (
-                      <span key={a} className="bg-emerald-50 text-emerald-700 text-xs font-medium px-2.5 py-1 rounded-full">
-                        {a}
-                      </span>
-                    ))}
                   </div>
                 </div>
               </Link>
@@ -326,33 +312,19 @@ export default function HomePage() {
                 href="/second-hand"
                 className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-amber-100 hover:shadow-2xl hover:shadow-amber-900/10 hover:-translate-y-2 transition-all duration-300"
               >
-                <div className="relative h-72 overflow-hidden">
+                <div className="h-72 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <span className="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">
-                    {item.tag}
-                  </span>
-                  <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur text-[#01452c] text-sm font-extrabold px-3 py-1.5 rounded-full">
-                    KES {item.price.toLocaleString()}
-                  </div>
                 </div>
-                <div className="p-5 space-y-3">
+                <div className="p-5">
                   <h3 className="font-bold text-[#01452c] text-base leading-snug">{item.title}</h3>
-                  <div className="flex items-center gap-1 text-[#2a6650]/60 text-sm">
+                  <div className="flex items-center gap-1 text-[#2a6650]/60 text-sm mt-2">
                     <Phone className="w-3.5 h-3.5" />
                     +254 712 345 678
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {item.tags.map((a) => (
-                      <span key={a} className="bg-amber-50 text-amber-700 text-xs font-medium px-2.5 py-1 rounded-full">
-                        {a}
-                      </span>
-                    ))}
                   </div>
                 </div>
               </Link>
