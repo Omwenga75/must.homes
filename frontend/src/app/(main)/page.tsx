@@ -213,7 +213,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-           FEATURED HOUSES
+           FEATURED ITEMS
       ═══════════════════════════════════════════════ */}
       <section className="py-24 px-6 sm:px-8 bg-[#f0fbf5]">
         <div className="max-w-7xl mx-auto">
