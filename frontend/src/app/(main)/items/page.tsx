@@ -408,22 +408,6 @@ export default function ItemsPage() {
         )}
       </div>
 
-      {/* Bottom CTA */}
-      <div className="bg-[#01452c] py-14 px-6 sm:px-8 mt-8">
-        <div className="max-w-2xl mx-auto text-center space-y-5">
-          <h3 className="text-2xl font-extrabold text-white">Found something you love?</h3>
-          <p className="text-white/60">
-            Create a free account to book viewings, contact sellers, save favourites, and manage your order — all in one place.
-          </p>
-          <Link
-            href="/login"
-            className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-2xl font-bold shadow-2xl shadow-emerald-900/30 transition-all hover:scale-105 active:scale-95"
-          >
-            <LogIn className="w-5 h-5" />
-            Create Free Account
-          </Link>
-        </div>
-      </div>
 
       {/* Footer */}
       <footer className="bg-[#012a1b] text-white/50 py-8 px-6 text-center text-sm">
