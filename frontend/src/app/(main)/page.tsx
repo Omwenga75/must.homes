@@ -179,7 +179,7 @@ export default function HomePage() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 flex flex-col items-center text-center">
           
           {/* Hero Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tighter mb-2 max-w-5xl drop-shadow-sm">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tighter mb-0 max-w-5xl drop-shadow-sm">
             Meru <br className="sm:hidden" />
             University
             {" "}
@@ -188,7 +188,7 @@ export default function HomePage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md max-w-2xl leading-relaxed mb-0 font-bold">
+          <p className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md max-w-2xl leading-relaxed mb-0 mt-2 font-bold">
             Buy And Sell.
           </p>
 
