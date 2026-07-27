@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Menu, X } from "lucide-react";
+import { ShoppingBag, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
@@ -23,9 +23,9 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 font-extrabold text-[#01452c] text-xl">
           <div className="w-8 h-8 rounded-lg bg-[#01452c] flex items-center justify-center">
-            <Home className="w-4.5 h-4.5 text-white w-[18px] h-[18px]" />
+            <ShoppingBag className="w-4.5 h-4.5 text-white w-[18px] h-[18px]" />
           </div>
-          MUST HOMES
+          MUST MARKETPLACE
         </Link>
 
         {/* Desktop links */}

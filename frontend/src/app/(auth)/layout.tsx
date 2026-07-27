@@ -20,7 +20,7 @@ export default function AuthLayout({
               <Home className="w-6 h-6 text-white" />
             </div>
             <span className="text-[#01452c] font-extrabold text-2xl tracking-tight">
-              MUST HOMES
+              MUST MARKETPLACE
             </span>
           </Link>
         </div>
@@ -84,7 +84,7 @@ export default function AuthLayout({
               <Home className="w-5 h-5 text-white" />
             </div>
             <span className="text-[#01452c] font-extrabold text-xl tracking-tight">
-              MUST HOMES
+              MUST MARKETPLACE
             </span>
           </Link>
         </div>

@@ -466,7 +466,7 @@ export default function HousesPage() {
 
       {/* Footer */}
       <footer className="bg-[#012a1b] text-white/50 py-8 px-6 text-center text-sm">
-        <p className="font-bold text-white text-sm mb-1">MUST HOMES</p>
+        <p className="font-bold text-white text-sm mb-1">MUST MARKETPLACE</p>
         <p>&copy; {new Date().getFullYear()} Meru University of Science and Technology. All rights reserved.</p>
       </footer>
     </div>

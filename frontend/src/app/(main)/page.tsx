@@ -10,7 +10,7 @@ import {
   ArrowRight,
   Building2,
   Users,
-  Home,
+  Home, ShoppingBag,
   CheckCircle,
   Phone,
   Mail,
@@ -18,9 +18,9 @@ import {
 } from "lucide-react";
 
 const stats = [
-  { icon: Building2, value: "500+", label: "Listed Houses" },
+  { icon: Building2, value: "500+", label: "Listed Items" },
   { icon: Users, value: "2,400+", label: "Happy Students" },
-  { icon: Home, value: "14", label: "Estates Covered" },
+  { icon: ShoppingBag, value: "14", label: "Categories Covered" },
   { icon: Star, value: "4.8★", label: "Average Rating" },
 ];
 
@@ -116,42 +116,42 @@ const testimonials = [
   },
 ];
 
-const featuredHouses = [
+const featuredItems = [
   {
     id: 1,
-    title: "Blue House",
-    estate: "Nchiru",
+    title: "Meko Gas Cylinder (6kg)",
+    location: "Nchiru",
     distance: "0.2 km",
-    price: 4500,
+    price: 2500,
     rating: 4.9,
-    amenities: ["WiFi", "Water", "Electricity"],
+    tags: ["Refilled", "With Burner"],
     tag: "Most Popular",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1621213032731-081048b067f9?w=600&q=80",
   },
   {
     id: 2,
-    title: "Pink House",
-    estate: "Nchiru",
-    distance: "0.1 km",
-    price: 6000,
+    title: "iPhone 11 (64GB)",
+    location: "Town Center",
+    distance: "1.0 km",
+    price: 25000,
     rating: 4.8,
-    amenities: ["WiFi", "Water", "Electricity", "Parking"],
+    tags: ["Unlocked", "No Scratches"],
     tag: "Verified",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=80",
   },
   {
     id: 3,
-    title: "Executive Studio with Security",
-    estate: "Town Center",
-    distance: "1.4 km",
-    price: 8000,
+    title: "Study Table & Chair",
+    location: "Nchiru",
+    distance: "0.5 km",
+    price: 3500,
     rating: 5.0,
-    amenities: ["WiFi", "Water", "Electricity", "Parking"],
+    tags: ["Wooden", "Ergonomic"],
     tag: "Premium",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=600&q=80",
   },
 ];
 
@@ -189,8 +189,7 @@ export default function HomePage() {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl md:text-2xl text-emerald-50/80 max-w-2xl leading-relaxed mb-0 font-medium">
-            Browse 500+ verified, affordable student homes near Meru University. 
-            <span className="text-white"> No middlemen. No hidden fees.</span>
+            Buy And Sell.
           </p>
 
 
@@ -219,43 +218,43 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center text-center gap-4 mb-12">
             <div className="space-y-2">
-              <h2 className="text-4xl font-extrabold text-[#01452c]">Featured Houses</h2>
+              <h2 className="text-4xl font-extrabold text-[#01452c]">Featured Items</h2>
               <p className="text-[#2a6650]/70 max-w-xl mx-auto">
-                Top-rated, verified houses that students love. No login needed to browse.
+                Top-rated, verified items that students love. No login needed to browse.
               </p>
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredHouses.map((house) => (
+            {featuredItems.map((item) => (
               <Link
-                key={house.id}
-                href="/houses"
+                key={item.id}
+                href="/items"
                 className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-[#01452c]/8 hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-2 transition-all duration-300"
               >
                 <div className="relative h-56 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={house.image}
-                    alt={house.title}
+                    src={item.image}
+                    alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <span className={`absolute top-3 left-3 ${house.tagColor} text-white text-xs font-bold px-3 py-1.5 rounded-full`}>
-                    {house.tag}
+                  <span className={`absolute top-3 left-3 ${item.tagColor} text-white text-xs font-bold px-3 py-1.5 rounded-full`}>
+                    {item.tag}
                   </span>
                   <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur text-[#01452c] text-sm font-extrabold px-3 py-1.5 rounded-full">
-                    KES {house.price.toLocaleString()}/mo
+                    KES {item.price.toLocaleString()}
                   </div>
                 </div>
                 <div className="p-5 space-y-3">
-                  <h3 className="font-bold text-[#01452c] text-base leading-snug">{house.title}</h3>
+                  <h3 className="font-bold text-[#01452c] text-base leading-snug">{item.title}</h3>
                   <div className="flex items-center gap-1 text-[#2a6650]/60 text-sm">
                     <MapPin className="w-3.5 h-3.5" />
-                    {house.estate} · {house.distance} from campus
+                    {item.location} · {item.distance} from campus
                   </div>
                   <div className="flex flex-wrap gap-1.5">
-                    {house.amenities.map((a) => (
+                    {item.tags.map((a) => (
                       <span key={a} className="bg-emerald-50 text-emerald-700 text-xs font-medium px-2.5 py-1 rounded-full">
                         {a}
                       </span>
@@ -264,7 +263,7 @@ export default function HomePage() {
                   <div className="flex items-center justify-between pt-1">
                     <div className="flex items-center gap-1">
                       <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm font-bold text-[#01452c]">{house.rating}</span>
+                      <span className="text-sm font-bold text-[#01452c]">{item.rating}</span>
                     </div>
                     <span className="text-sm font-semibold text-emerald-600 group-hover:underline">
                       View Details →
@@ -280,7 +279,7 @@ export default function HomePage() {
               href="/houses"
               className="inline-flex items-center gap-2 bg-[#01452c] hover:bg-[#023120] text-white px-10 py-4 rounded-2xl font-bold shadow-xl shadow-[#01452c]/20 transition-all hover:scale-105 active:scale-95"
             >
-              Explore All 500+ Houses
+              Explore All 500+ Items
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -293,7 +292,7 @@ export default function HomePage() {
       <section id="how-it-works" className="py-24 px-6 sm:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-3">
-            <h2 className="text-4xl font-extrabold text-[#01452c]">How MUST HOMES Works</h2>
+            <h2 className="text-4xl font-extrabold text-[#01452c]">How MUST MARKETPLACE Works</h2>
             <p className="text-[#2a6650]/70 max-w-xl mx-auto text-lg">
               You can browse everything for free. Login is only needed when you&apos;re ready to book or contact a landlord.
             </p>
@@ -424,9 +423,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2.5 font-extrabold text-white text-lg">
             <div className="w-7 h-7 rounded-lg bg-emerald-500 flex items-center justify-center">
-              <Home className="w-4 h-4 text-white" />
+              <ShoppingBag className="w-4 h-4 text-white" />
             </div>
-            MUST HOMES
+            MUST MARKETPLACE
           </div>
           <p className="text-sm text-center">
             &copy; {new Date().getFullYear()} Meru University of Science and Technology Student Housing Platform.

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MUST HOMES — Student Housing Platform",
+  title: "MUST MARKETPLACE — Student Housing Platform",
   description: "Find verified, affordable student accommodation near Meru University of Science and Technology. Browse 500+ listings with no middlemen and no hidden fees.",
 };
 
