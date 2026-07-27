@@ -187,10 +187,7 @@ export default function HomePage() {
             Marketplace
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md max-w-2xl leading-relaxed mb-0 mt-2 font-bold">
-            Buy And Sell.
-          </p>
+
 
 
         </div>
