@@ -127,7 +127,7 @@ const featuredItems = [
     tags: ["Refilled", "With Burner"],
     tag: "Most Popular",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1621213032731-081048b067f9?w=600&q=80",
+    image: "https://picsum.photos/seed/item1/600/400",
   },
   {
     id: 2,
@@ -139,7 +139,7 @@ const featuredItems = [
     tags: ["Unlocked", "No Scratches"],
     tag: "Verified",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=80",
+    image: "https://picsum.photos/seed/item2/600/400",
   },
   {
     id: 3,
@@ -151,7 +151,7 @@ const featuredItems = [
     tags: ["Wooden", "Ergonomic"],
     tag: "Premium",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=600&q=80",
+    image: "https://picsum.photos/seed/item3/600/400",
   },
 ];
 
@@ -162,7 +162,7 @@ const secondHandItems = [
     price: 12000,
     tag: "Used - Good",
     tags: ["Minor Scratches", "Battery 85%"],
-    image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&q=80",
+    image: "https://picsum.photos/seed/item4/600/400",
   },
   {
     id: 2,
@@ -170,7 +170,7 @@ const secondHandItems = [
     price: 28000,
     tag: "Used - Excellent",
     tags: ["8GB RAM", "256GB SSD"],
-    image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80",
+    image: "https://picsum.photos/seed/item5/600/400",
   },
   {
     id: 3,
@@ -178,7 +178,7 @@ const secondHandItems = [
     price: 800,
     tag: "Used - Good",
     tags: ["Complete Set", "Year 1"],
-    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80",
+    image: "https://picsum.photos/seed/item6/600/400",
   },
 ];
 

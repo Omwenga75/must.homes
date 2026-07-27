@@ -32,7 +32,7 @@ const items = [
     amenities: ["wifi", "water", "electricity"],
     tag: "Most Popular",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1621213032731-081048b067f9?w=600&q=80",
+    image: "https://picsum.photos/seed/item7/600/400",
   },
   {
     id: 2,
@@ -46,7 +46,7 @@ const items = [
     amenities: ["water", "electricity"],
     tag: "Verified",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=80",
+    image: "https://picsum.photos/seed/item8/600/400",
   },
   {
     id: 3,
@@ -60,7 +60,7 @@ const items = [
     amenities: ["wifi", "parking"],
     tag: "Premium",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=600&q=80",
+    image: "https://picsum.photos/seed/item9/600/400",
   },
   {
     id: 4,
@@ -74,7 +74,7 @@ const items = [
     amenities: ["wifi", "electricity"],
     tag: "New",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1531297172868-944c591616c7?w=600&q=80",
+    image: "https://picsum.photos/seed/item10/600/400",
   },
   {
     id: 5,
@@ -88,7 +88,7 @@ const items = [
     amenities: ["water", "electricity"],
     tag: "Budget Friendly",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=600&q=80",
+    image: "https://picsum.photos/seed/item11/600/400",
   },
   {
     id: 6,
@@ -102,7 +102,7 @@ const items = [
     amenities: ["wifi", "water", "electricity", "parking"],
     tag: "Premium",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=80",
+    image: "https://picsum.photos/seed/item12/600/400",
   },
   {
     id: 7,
@@ -116,7 +116,7 @@ const items = [
     amenities: ["water", "electricity"],
     tag: "Cosy",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1550291652-6ea9114a47b1?w=600&q=80",
+    image: "https://picsum.photos/seed/item13/600/400",
   },
   {
     id: 8,
@@ -130,7 +130,7 @@ const items = [
     amenities: ["wifi", "water", "electricity"],
     tag: "Great Value",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&q=80",
+    image: "https://picsum.photos/seed/item14/600/400",
   },
   {
     id: 9,
@@ -144,7 +144,7 @@ const items = [
     amenities: ["wifi", "water", "electricity"],
     tag: "All Inclusive",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1595036136611-306fbc3b5bdf?w=600&q=80",
+    image: "https://picsum.photos/seed/item15/600/400",
   },
 ];
 
@@ -347,14 +347,6 @@ export default function ItemsPage() {
 
       {/* Items Grid */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12">
-        <div className="flex items-center justify-between mb-8">
-          <p className="text-[#01452c]/60 text-sm">
-            <span className="font-bold text-[#01452c] text-base">{filtered.length}</span> item{filtered.length !== 1 && "s"} found
-          </p>
-          <p className="text-xs text-[#01452c]/40 hidden sm:block">
-            Browse freely — login only needed to book
-          </p>
-        </div>
 
         {filtered.length === 0 ? (
           <div className="text-center py-24 text-[#01452c]/40 bg-white rounded-3xl border border-[#01452c]/8">

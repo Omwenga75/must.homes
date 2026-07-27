@@ -18,7 +18,7 @@ const secondHandItems = [
     price: 12000,
     tag: "Used - Good",
     tags: ["Minor Scratches", "Battery 85%"],
-    image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&q=80",
+    image: "https://picsum.photos/seed/item16/600/400",
     location: "Nchiru",
   },
   {
@@ -27,7 +27,7 @@ const secondHandItems = [
     price: 28000,
     tag: "Used - Excellent",
     tags: ["8GB RAM", "256GB SSD"],
-    image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80",
+    image: "https://picsum.photos/seed/item17/600/400",
     location: "Town Center",
   },
   {
@@ -36,7 +36,7 @@ const secondHandItems = [
     price: 800,
     tag: "Used - Good",
     tags: ["Complete Set", "Year 1"],
-    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80",
+    image: "https://picsum.photos/seed/item18/600/400",
     location: "Kiharu Location",
   },
   {
@@ -45,7 +45,7 @@ const secondHandItems = [
     price: 35000,
     tag: "Used - Excellent",
     tags: ["18-55mm Lens", "2 Batteries"],
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80",
+    image: "https://picsum.photos/seed/item19/600/400",
     location: "Muiri Location",
   },
   {
@@ -54,7 +54,7 @@ const secondHandItems = [
     price: 400,
     tag: "Used - Good",
     tags: ["8th Edition", "Highlighted"],
-    image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&q=80",
+    image: "https://picsum.photos/seed/item20/600/400",
     location: "Nchiru",
   },
   {
@@ -63,7 +63,7 @@ const secondHandItems = [
     price: 1200,
     tag: "Used - Excellent",
     tags: ["USB Powered", "Quiet"],
-    image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80",
+    image: "https://picsum.photos/seed/item21/600/400",
     location: "Town Center",
   },
   {
@@ -72,7 +72,7 @@ const secondHandItems = [
     price: 900,
     tag: "Used - Good",
     tags: ["FX-991ES", "All Functions"],
-    image: "https://images.unsplash.com/photo-1564865878688-9a244444042a?w=600&q=80",
+    image: "https://picsum.photos/seed/item22/600/400",
     location: "Makuyu Location",
   },
   {
@@ -81,7 +81,7 @@ const secondHandItems = [
     price: 5500,
     tag: "Used - Fair",
     tags: ["Sturdy", "Self Assembly"],
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80",
+    image: "https://picsum.photos/seed/item23/600/400",
     location: "Kiharu Location",
   },
   {
@@ -90,7 +90,7 @@ const secondHandItems = [
     price: 2500,
     tag: "Used - Excellent",
     tags: ["Original", "With Case"],
-    image: "https://images.unsplash.com/photo-1605464315542-bda3e2f4e605?w=600&q=80",
+    image: "https://picsum.photos/seed/item24/600/400",
     location: "Muiri Location",
   },
 ];
@@ -230,14 +230,6 @@ export default function SecondHandPage() {
 
       {/* Items Grid */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12">
-        <div className="flex items-center justify-between mb-8">
-          <p className="text-amber-700/60 text-sm">
-            <span className="font-bold text-amber-700 text-base">{filtered.length}</span> item{filtered.length !== 1 && "s"} found
-          </p>
-          <Link href="/items" className="text-xs text-[#01452c] hover:underline font-semibold">
-            Browse New Items →
-          </Link>
-        </div>
 
         {filtered.length === 0 ? (
           <div className="text-center py-24 text-amber-700/40 bg-white rounded-3xl border border-amber-100">
