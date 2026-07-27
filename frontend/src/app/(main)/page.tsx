@@ -165,7 +165,7 @@ export default function HomePage() {
       <section className="relative flex items-center justify-center pt-28 pb-24">
         {/* Dynamic Background Image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1920&q=80')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
+          <div className="absolute inset-0 bg-[url('/hero_bg.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
           {/* Lighter overlay so the image is clearly visible */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#022c22]/50 via-[#022c22]/30 to-[#022c22]/60" />
         </div>
@@ -198,7 +198,7 @@ export default function HomePage() {
       ═══════════════════════════════════════════════ */}
       <section className="relative py-10 overflow-hidden">
         {/* Hero BG image continuation */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1920&q=80')] bg-cover bg-center bg-no-repeat" />
+        <div className="absolute inset-0 bg-[url('/hero_bg.png')] bg-cover bg-center bg-no-repeat" />
         {/* Dark gradient overlay — heavier than hero so text pops */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#011a10]/80 via-[#011a10]/85 to-[#011a10]/90" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
