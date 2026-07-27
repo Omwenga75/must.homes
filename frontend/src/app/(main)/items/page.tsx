@@ -227,6 +227,7 @@ export default function ItemsPage() {
                     <Phone className="w-4 h-4 flex-shrink-0" />
                     +254 712 345 678
                   </div>
+                </div>
               </div>
             </div>
           ))}
