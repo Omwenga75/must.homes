@@ -30,8 +30,8 @@ export default function AuthLayout({
           {/* Main big image */}
           <div className="absolute top-10 right-8 w-56 h-72 rounded-2xl overflow-hidden shadow-2xl rotate-3 bg-white p-1.5">
             <img
-              src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80"
-              alt="Modern Apartment"
+              src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?w=600&q=80"
+              alt="Items"
               className="w-full h-full object-cover rounded-xl"
             />
           </div>
@@ -39,21 +39,13 @@ export default function AuthLayout({
 
         </div>
 
-        {/* Centered 3D House Icon — between logo and text */}
+        {/* Centered 3D Item Icon — between logo and text */}
         <div className="absolute left-0 right-[45%] top-[30%] -translate-y-1/2 flex items-center justify-center z-20">
           <div
-            className="w-28 h-28 rounded-full bg-white shadow-2xl flex items-center justify-center border border-emerald-50 animate-bounce"
+            className="w-28 h-28 rounded-full bg-white shadow-2xl flex items-center justify-center border border-emerald-50 animate-bounce text-6xl"
             style={{ animationDuration: "3s" }}
           >
-            <img
-              src="/house-icon.png"
-              alt="3D House"
-              className="w-20 h-20 object-contain"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement!.innerHTML = '<span style="font-size:4rem">🏠</span>';
-              }}
-            />
+            🛒
           </div>
         </div>
 

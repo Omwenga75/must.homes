@@ -18,81 +18,81 @@ import {
   LogIn,
 } from "lucide-react";
 
-const houses = [
+const items = [
   {
     id: 1,
-    title: "Blue Bedsitter",
-    estate: "Nchiru",
+    title: "Meko Gas Cylinder (6kg)",
+    location: "Nchiru",
     distance: "0.2 km from campus",
-    price: 4500,
+    price: 2500,
     beds: 1,
     rating: 4.9,
     reviews: 23,
     amenities: ["wifi", "water", "electricity"],
     tag: "Most Popular",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1621213032731-081048b067f9?w=600&q=80",
   },
   {
     id: 2,
-    title: "HillGaze",
-    estate: "KAN Backstreet",
-    distance: "0.6 km from campus",
-    price: 6000,
+    title: "iPhone 11 (64GB)",
+    location: "Town Center",
+    distance: "1.0 km from campus",
+    price: 25000,
     beds: 1,
-    rating: 4.7,
+    rating: 4.8,
     reviews: 18,
     amenities: ["water", "electricity"],
-    tag: "Budget Friendly",
+    tag: "Verified",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=80",
   },
   {
     id: 3,
-    title: "Pink Studio",
-    estate: "Nchiru",
-    distance: "0.1 km from campus",
-    price: 6000,
+    title: "Study Table & Chair",
+    location: "Nchiru",
+    distance: "0.5 km from campus",
+    price: 3500,
     beds: 1,
-    rating: 4.8,
+    rating: 5.0,
     reviews: 11,
-    amenities: ["wifi", "water", "electricity", "parking"],
-    tag: "Verified",
+    amenities: ["wifi", "parking"],
+    tag: "Premium",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=600&q=80",
   },
   {
     id: 4,
-    title: "2-Bedroom Apartment, Quiet Neighborhood",
-    estate: "Muiri Estate",
+    title: "Hp EliteBook 840 G5",
+    location: "Muiri Location",
     distance: "1.1 km from campus",
-    price: 9500,
-    beds: 2,
+    price: 22000,
+    beds: 1,
     rating: 4.6,
     reviews: 9,
-    amenities: ["wifi", "water", "electricity", "parking"],
+    amenities: ["wifi", "electricity"],
     tag: "New",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1531297172868-944c591616c7?w=600&q=80",
   },
   {
     id: 5,
-    title: "Studio Unit, Walking Distance to MUST",
-    estate: "Makuyu Estate",
+    title: "Sony WH-1000XM4 Headphones",
+    location: "Makuyu Location",
     distance: "0.3 km from campus",
-    price: 2800,
+    price: 18000,
     beds: 1,
     rating: 4.5,
     reviews: 34,
     amenities: ["water", "electricity"],
     tag: "Budget Friendly",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=600&q=80",
   },
   {
     id: 6,
-    title: "Executive Studio with WiFi & Security",
-    estate: "Town Center",
+    title: "Mini Fridge",
+    location: "Town Center",
     distance: "1.4 km from campus",
     price: 8000,
     beds: 1,
@@ -101,49 +101,49 @@ const houses = [
     amenities: ["wifi", "water", "electricity", "parking"],
     tag: "Premium",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=80",
   },
   {
     id: 7,
-    title: "Cosy Bedsitter with Garden View",
-    estate: "Muiri Estate",
+    title: "Acoustic Guitar",
+    location: "Muiri Location",
     distance: "0.9 km from campus",
-    price: 3800,
+    price: 5000,
     beds: 1,
     rating: 4.4,
     reviews: 12,
     amenities: ["water", "electricity"],
     tag: "Cosy",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1550291652-6ea9114a47b1?w=600&q=80",
   },
   {
     id: 8,
-    title: "Shared 2-Bedroom Near Kiharu Market",
-    estate: "Kiharu Estate",
+    title: "Calculus Textbook",
+    location: "Kiharu Location",
     distance: "0.7 km from campus",
-    price: 5500,
-    beds: 2,
+    price: 1500,
+    beds: 1,
     rating: 4.6,
     reviews: 19,
     amenities: ["wifi", "water", "electricity"],
     tag: "Great Value",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&q=80",
   },
   {
     id: 9,
-    title: "Furnished Studio, Bills Included",
-    estate: "Town Center",
+    title: "Electric Kettle",
+    location: "Town Center",
     distance: "1.2 km from campus",
-    price: 6500,
+    price: 1200,
     beds: 1,
     rating: 4.9,
     reviews: 5,
     amenities: ["wifi", "water", "electricity"],
     tag: "All Inclusive",
     tagColor: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1595036136611-306fbc3b5bdf?w=600&q=80",
   },
 ];
 
@@ -161,10 +161,10 @@ const amenityLabels: Record<string, string> = {
   parking: "Parking",
 };
 
-const estates = ["All Estates", "Kiharu Estate", "Makuyu Estate", "Muiri Estate", "Town Center"];
+const locations = ["All Locations", "Kiharu Location", "Makuyu Location", "Muiri Location", "Town Center"];
 const priceRanges = ["Any Price", "Under KES 3,500", "KES 3,500–6,000", "KES 6,000–9,000", "Above KES 9,000"];
 
-function BookingModal({ onClose }: { onClose: () => void }) {
+function OrderModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
@@ -204,24 +204,24 @@ function BookingModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-export default function HousesPage() {
+export default function ItemsPage() {
   const [search, setSearch] = useState("");
-  const [selectedEstate, setSelectedEstate] = useState("All Estates");
+  const [selectedLocation, setSelectedLocation] = useState("All Locations");
   const [selectedPrice, setSelectedPrice] = useState("Any Price");
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
-  const [showBookingModal, setShowBookingModal] = useState(false);
+  const [showOrderModal, setShowOrderModal] = useState(false);
 
   const toggleAmenity = (a: string) =>
     setSelectedAmenities((prev) =>
       prev.includes(a) ? prev.filter((x) => x !== a) : [...prev, a]
     );
 
-  const filtered = houses.filter((h) => {
+  const filtered = items.filter((h) => {
     const matchSearch =
       h.title.toLowerCase().includes(search.toLowerCase()) ||
-      h.estate.toLowerCase().includes(search.toLowerCase());
-    const matchEstate = selectedEstate === "All Estates" || h.estate === selectedEstate;
+      h.location.toLowerCase().includes(search.toLowerCase());
+    const matchLocation = selectedLocation === "All Locations" || h.location === selectedLocation;
     const matchAmenities =
       selectedAmenities.length === 0 ||
       selectedAmenities.every((a) => h.amenities.includes(a));
@@ -233,17 +233,17 @@ export default function HousesPage() {
       if (selectedPrice === "Above KES 9,000") return h.price > 9000;
       return true;
     })();
-    return matchSearch && matchEstate && matchAmenities && matchPrice;
+    return matchSearch && matchLocation && matchAmenities && matchPrice;
   });
 
   const hasFilters =
     selectedAmenities.length > 0 ||
     selectedPrice !== "Any Price" ||
-    selectedEstate !== "All Estates";
+    selectedLocation !== "All Locations";
 
   return (
     <div className="min-h-screen bg-[#f0fbf5]">
-      {showBookingModal && <BookingModal onClose={() => setShowBookingModal(false)} />}
+      {showOrderModal && <OrderModal onClose={() => setShowOrderModal(false)} />}
 
       {/* Page Header */}
       <div className="bg-[#01452c] py-10 px-6 sm:px-8">
@@ -258,7 +258,7 @@ export default function HousesPage() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
               <input
                 type="text"
-                placeholder="Search by name or estate..."
+                placeholder="Search by name or location..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 pl-12 pr-4 py-3.5 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400/40 transition"
@@ -276,7 +276,7 @@ export default function HousesPage() {
               Filters
               {hasFilters && (
                 <span className="w-5 h-5 rounded-full bg-white text-[#01452c] text-xs font-extrabold flex items-center justify-center">
-                  {selectedAmenities.length + (selectedPrice !== "Any Price" ? 1 : 0) + (selectedEstate !== "All Estates" ? 1 : 0)}
+                  {selectedAmenities.length + (selectedPrice !== "Any Price" ? 1 : 0) + (selectedLocation !== "All Locations" ? 1 : 0)}
                 </span>
               )}
             </button>
@@ -289,14 +289,14 @@ export default function HousesPage() {
         <div className="bg-white border-b border-[#01452c]/10 px-6 sm:px-8 py-6 shadow-sm">
           <div className="max-w-7xl mx-auto flex flex-wrap gap-6 items-end justify-center">
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-[#01452c]/50">Estate</label>
+              <label className="text-xs font-bold uppercase tracking-widest text-[#01452c]/50">Location</label>
               <div className="relative">
                 <select
-                  value={selectedEstate}
-                  onChange={(e) => setSelectedEstate(e.target.value)}
+                  value={selectedLocation}
+                  onChange={(e) => setSelectedLocation(e.target.value)}
                   className="appearance-none bg-[#e8f7f2] border border-[#01452c]/15 text-[#01452c] text-sm font-semibold pl-4 pr-10 py-3 rounded-xl focus:outline-none cursor-pointer"
                 >
-                  {estates.map((e) => <option key={e}>{e}</option>)}
+                  {locations.map((e) => <option key={e}>{e}</option>)}
                 </select>
                 <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#01452c]/50 pointer-events-none" />
               </div>
@@ -334,7 +334,7 @@ export default function HousesPage() {
             </div>
             {hasFilters && (
               <button
-                onClick={() => { setSelectedEstate("All Estates"); setSelectedPrice("Any Price"); setSelectedAmenities([]); }}
+                onClick={() => { setSelectedLocation("All Locations"); setSelectedPrice("Any Price"); setSelectedAmenities([]); }}
                 className="flex items-center gap-1.5 text-sm text-[#01452c]/50 hover:text-[#01452c] transition pb-1"
               >
                 <X className="w-4 h-4" /> Clear all
@@ -344,7 +344,7 @@ export default function HousesPage() {
         </div>
       )}
 
-      {/* Houses Grid */}
+      {/* Items Grid */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12">
         <div className="flex items-center justify-between mb-8">
           <p className="text-[#01452c]/60 text-sm">
@@ -361,7 +361,7 @@ export default function HousesPage() {
             <p className="text-xl font-bold text-[#01452c]/50">No items match your filters</p>
             <p className="text-sm mt-1">Try adjusting your search or clearing filters</p>
             <button
-              onClick={() => { setSearch(""); setSelectedEstate("All Estates"); setSelectedPrice("Any Price"); setSelectedAmenities([]); }}
+              onClick={() => { setSearch(""); setSelectedLocation("All Locations"); setSelectedPrice("Any Price"); setSelectedAmenities([]); }}
               className="mt-5 text-sm font-semibold text-emerald-600 hover:underline"
             >
               Clear all filters
@@ -369,41 +369,41 @@ export default function HousesPage() {
           </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((house) => (
+            {filtered.map((item) => (
               <div
-                key={house.id}
+                key={item.id}
                 className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-[#01452c]/8 hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-1.5 transition-all duration-300"
               >
                 {/* Image */}
                 <div className="relative h-52 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={house.image}
-                    alt={house.title}
+                    src={item.image}
+                    alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <span className={`absolute top-3 left-3 ${house.tagColor} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg`}>
-                    {house.tag}
+                  <span className={`absolute top-3 left-3 ${item.tagColor} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg`}>
+                    {item.tag}
                   </span>
                   <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur text-[#01452c] text-sm font-extrabold px-3 py-1.5 rounded-full shadow-lg">
-                    KES {house.price.toLocaleString()}<span className="text-xs font-medium text-[#01452c]/50">/mo</span>
+                    KES {item.price.toLocaleString()}<span className="text-xs font-medium text-[#01452c]/50">/mo</span>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-5 space-y-3">
                   <div>
-                    <h3 className="font-bold text-[#01452c] text-[15px] leading-snug">{house.title}</h3>
+                    <h3 className="font-bold text-[#01452c] text-[15px] leading-snug">{item.title}</h3>
                     <div className="flex items-center gap-1.5 text-[#2a6650]/55 text-xs mt-1.5">
                       <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-                      {house.estate} · {house.distance}
+                      {item.location} · {item.distance}
                     </div>
                   </div>
 
                   {/* Amenities */}
                   <div className="flex flex-wrap gap-1.5">
-                    {house.amenities.map((a) => (
+                    {item.amenities.map((a) => (
                       <span
                         key={a}
                         className="flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs font-medium px-2.5 py-1 rounded-full"
@@ -418,23 +418,23 @@ export default function HousesPage() {
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-3.5 h-3.5 ${i < Math.floor(house.rating) ? "fill-yellow-400 text-yellow-400" : "fill-gray-100 text-gray-200"}`}
+                        className={`w-3.5 h-3.5 ${i < Math.floor(item.rating) ? "fill-yellow-400 text-yellow-400" : "fill-gray-100 text-gray-200"}`}
                       />
                     ))}
-                    <span className="text-sm font-bold text-[#01452c] ml-0.5">{house.rating}</span>
-                    <span className="text-xs text-[#2a6650]/40">({house.reviews} reviews)</span>
+                    <span className="text-sm font-bold text-[#01452c] ml-0.5">{item.rating}</span>
+                    <span className="text-xs text-[#2a6650]/40">({item.reviews} reviews)</span>
                   </div>
 
                   {/* Actions */}
                   <div className="flex gap-2 pt-1">
                     <button
-                      onClick={() => setShowBookingModal(true)}
+                      onClick={() => setShowOrderModal(true)}
                       className="flex-1 bg-[#01452c] hover:bg-[#023120] text-white text-sm font-bold py-2.5 rounded-xl transition-all hover:scale-[1.02] active:scale-95"
                     >
                       Book Viewing
                     </button>
                     <button
-                      onClick={() => setShowBookingModal(true)}
+                      onClick={() => setShowOrderModal(true)}
                       className="flex items-center gap-1 px-4 py-2.5 border border-[#01452c]/20 text-[#01452c] hover:bg-[#e8f7f2] text-sm font-semibold rounded-xl transition-colors"
                     >
                       <ArrowRight className="w-4 h-4" />
@@ -452,7 +452,7 @@ export default function HousesPage() {
         <div className="max-w-2xl mx-auto text-center space-y-5">
           <h3 className="text-2xl font-extrabold text-white">Found something you love?</h3>
           <p className="text-white/60">
-            Create a free account to book viewings, contact landlords, save favourites, and manage your booking — all in one place.
+            Create a free account to book viewings, contact sellers, save favourites, and manage your order — all in one place.
           </p>
           <Link
             href="/login"

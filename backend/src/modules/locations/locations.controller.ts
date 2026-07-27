@@ -13,50 +13,50 @@ import { Role } from '@prisma/client';
 import { Public, Roles } from '../../common/decorators/roles.decorator';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
-import { CreateEstateDto } from './dto/create-estate.dto';
-import { EstatesService } from './estates.service';
+import { CreateLocationDto } from './dto/create-location.dto';
+import { LocationsService } from './locations.service';
 
-@Controller('estates')
+@Controller('locations')
 @UseGuards(JwtAuthGuard, RolesGuard)
-export class EstatesController {
-  constructor(private readonly estatesService: EstatesService) {}
+export class LocationsController {
+  constructor(private readonly locationsService: LocationsService) {}
 
   @Public()
   @Get()
   findAll() {
-    return this.estatesService.findAll();
+    return this.locationsService.findAll();
   }
 
   @Public()
   @Get(':id')
   findById(@Param('id', ParseUUIDPipe) id: string) {
-    return this.estatesService.findById(id);
+    return this.locationsService.findById(id);
   }
 
   @Roles(Role.ADMIN)
   @Post()
-  create(@Body() dto: CreateEstateDto) {
-    return this.estatesService.create(dto);
+  create(@Body() dto: CreateLocationDto) {
+    return this.locationsService.create(dto);
   }
 
   @Roles(Role.ADMIN)
   @Put(':id')
   update(
     @Param('id', ParseUUIDPipe) id: string,
-    @Body() dto: Partial<CreateEstateDto>,
+    @Body() dto: Partial<CreateLocationDto>,
   ) {
-    return this.estatesService.update(id, dto);
+    return this.locationsService.update(id, dto);
   }
 
   @Roles(Role.ADMIN)
   @Delete(':id')
   delete(@Param('id', ParseUUIDPipe) id: string) {
-    return this.estatesService.delete(id);
+    return this.locationsService.delete(id);
   }
 
   @Roles(Role.ADMIN)
   @Post('seed')
   seed() {
-    return this.estatesService.seed();
+    return this.locationsService.seed();
   }
 }

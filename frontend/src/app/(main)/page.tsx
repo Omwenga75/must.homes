@@ -55,7 +55,7 @@ const features = [
   },
   {
     icon: Zap,
-    title: "Instant Booking",
+    title: "Instant Order",
     desc: "Book a viewing or secure your item immediately. Connect directly with sellers.",
     color: "bg-emerald-50",
     iconColor: "text-emerald-600",
@@ -83,7 +83,7 @@ const howItWorks = [
   {
     step: "03",
     title: "Create an Account",
-    desc: "Sign up free when you&apos;re ready to book a viewing or message a landlord directly.",
+    desc: "Sign up free when you&apos;re ready to book a viewing or message a seller directly.",
   },
   {
     step: "04",
@@ -165,7 +165,7 @@ export default function HomePage() {
       <section className="relative flex items-center justify-center pt-28 pb-24">
         {/* Dynamic Background Image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('/hero_bg.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1920&q=80')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out hover:scale-110" />
           {/* Lighter overlay so the image is clearly visible */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#022c22]/50 via-[#022c22]/30 to-[#022c22]/60" />
         </div>
@@ -198,7 +198,7 @@ export default function HomePage() {
       ═══════════════════════════════════════════════ */}
       <section className="relative py-10 overflow-hidden">
         {/* Hero BG image continuation */}
-        <div className="absolute inset-0 bg-[url('/hero_bg.png')] bg-cover bg-center bg-no-repeat" />
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1920&q=80')] bg-cover bg-center bg-no-repeat" />
         {/* Dark gradient overlay — heavier than hero so text pops */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#011a10]/80 via-[#011a10]/85 to-[#011a10]/90" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -277,7 +277,7 @@ export default function HomePage() {
 
           <div className="mt-10 text-center">
             <Link
-              href="/houses"
+              href="/items"
               className="inline-flex items-center gap-2 bg-[#01452c] hover:bg-[#023120] text-white px-10 py-4 rounded-2xl font-bold shadow-xl shadow-[#01452c]/20 transition-all hover:scale-105 active:scale-95"
             >
               Explore All 500+ Items
@@ -295,7 +295,7 @@ export default function HomePage() {
           <div className="text-center mb-16 space-y-3">
             <h2 className="text-4xl font-extrabold text-[#01452c]">How MUST MARKETPLACE Works</h2>
             <p className="text-[#2a6650]/70 max-w-xl mx-auto text-lg">
-              You can browse everything for free. Login is only needed when you&apos;re ready to book or contact a landlord.
+              You can browse everything for free. Login is only needed when you&apos;re ready to book or contact a seller.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -388,7 +388,7 @@ export default function HomePage() {
             Ready to Find What You Need?
           </h2>
           <p className="text-[#2a6650]/70 text-lg max-w-xl mx-auto">
-            Browse freely. Login only when you&apos;re ready to book or contact a landlord.
+            Browse freely. Login only when you&apos;re ready to book or contact a seller.
             It only takes 30 seconds to create a free account.
           </p>
         </div>
@@ -432,7 +432,7 @@ export default function HomePage() {
             &copy; {new Date().getFullYear()} Meru University of Science and Technology Student Marketplace.
           </p>
           <div className="flex items-center gap-6 text-sm">
-            <Link href="/houses" className="hover:text-white transition-colors">Items</Link>
+            <Link href="/items" className="hover:text-white transition-colors">Items</Link>
             <Link href="/#features" className="hover:text-white transition-colors">Features</Link>
             <Link href="/login" className="hover:text-white transition-colors">Sign In</Link>
           </div>

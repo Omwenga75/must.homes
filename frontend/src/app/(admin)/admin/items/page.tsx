@@ -5,14 +5,14 @@ import { Plus, Edit2, Trash2, Search, Filter, X, Loader2, Save } from "lucide-re
 import api from "@/lib/api";
 import { toast } from "sonner";
 
-interface Property {
+interface Item {
   id: string;
   title: string;
   price: number;
-  roomType: string;
+  condition: string;
   availability: string;
   createdAt: string;
-  estate?: { name: string };
+  location?: { name: string };
 }
 
 interface EditForm {
@@ -21,85 +21,85 @@ interface EditForm {
   availability: string;
 }
 
-export default function PropertiesManagement() {
-  const [properties, setProperties] = useState<Property[]>([]);
+export default function ItemsManagement() {
+  const [items, setItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
   // Edit modal state
-  const [editingProperty, setEditingProperty] = useState<Property | null>(null);
+  const [editingItem, setEditingItem] = useState<Item | null>(null);
   const [editForm, setEditForm] = useState<EditForm>({ title: "", price: "", availability: "" });
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    fetchProperties();
+    fetchItems();
   }, []);
 
-  const fetchProperties = async () => {
+  const fetchItems = async () => {
     try {
       setLoading(true);
-      const res = await api.get("/houses");
+      const res = await api.get("/items");
       const data = res.data?.data || res.data || [];
-      setProperties(Array.isArray(data) ? data : []);
+      setItems(Array.isArray(data) ? data : []);
     } catch (error) {
-      console.error("Failed to fetch properties", error);
+      console.error("Failed to fetch items", error);
     } finally {
       setLoading(false);
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm("Are you sure you want to delete this property?")) {
+    if (confirm("Are you sure you want to delete this item?")) {
       try {
-        await api.delete(`/houses/${id}`);
-        toast.success("Property deleted successfully");
-        fetchProperties();
+        await api.delete(`/items/${id}`);
+        toast.success("Item deleted successfully");
+        fetchItems();
       } catch (error) {
-        console.error("Failed to delete property", error);
-        toast.error("Failed to delete property.");
+        console.error("Failed to delete item", error);
+        toast.error("Failed to delete item.");
       }
     }
   };
 
-  const openEdit = (property: Property) => {
-    setEditingProperty(property);
+  const openEdit = (item: Item) => {
+    setEditingItem(item);
     setEditForm({
-      title: property.title,
-      price: String(property.price),
-      availability: property.availability,
+      title: item.title,
+      price: String(item.price),
+      availability: item.availability,
     });
   };
 
   const closeEdit = () => {
-    setEditingProperty(null);
+    setEditingItem(null);
     setEditForm({ title: "", price: "", availability: "" });
   };
 
   const handleSave = async () => {
-    if (!editingProperty) return;
+    if (!editingItem) return;
     if (!editForm.title.trim()) {
       toast.error("Title cannot be empty");
       return;
     }
     setSaving(true);
     try {
-      await api.patch(`/houses/${editingProperty.id}`, {
+      await api.patch(`/items/${editingItem.id}`, {
         title: editForm.title.trim(),
         price: parseFloat(editForm.price),
         availability: editForm.availability,
       });
-      toast.success("Property updated successfully!");
+      toast.success("Item updated successfully!");
       closeEdit();
-      fetchProperties();
+      fetchItems();
     } catch (error) {
-      console.error("Failed to update property", error);
-      toast.error("Failed to update property. Please try again.");
+      console.error("Failed to update item", error);
+      toast.error("Failed to update item. Please try again.");
     } finally {
       setSaving(false);
     }
   };
 
-  const filteredProperties = properties.filter((p) =>
+  const filteredItems = items.filter((p) =>
     p.title.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -107,12 +107,12 @@ export default function PropertiesManagement() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-extrabold text-[#01452c]">Properties</h1>
+          <h1 className="text-2xl font-extrabold text-[#01452c]">Items</h1>
           <p className="text-slate-500 text-sm mt-1">Manage all listings on the platform</p>
         </div>
         <button className="flex items-center gap-2 bg-[#01452c] hover:bg-[#023120] text-white px-5 py-2.5 rounded-xl font-bold transition-all shadow-md shadow-[#01452c]/20 hover:scale-105 active:scale-95">
           <Plus className="w-5 h-5" />
-          Add Property
+          Add Item
         </button>
       </div>
 
@@ -122,7 +122,7 @@ export default function PropertiesManagement() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Search properties..."
+              placeholder="Search items..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
@@ -138,7 +138,7 @@ export default function PropertiesManagement() {
           <table className="w-full text-left text-sm text-slate-600">
             <thead className="text-xs uppercase bg-slate-50 text-slate-500 font-bold tracking-wider">
               <tr>
-                <th className="px-6 py-4">Title / Estate</th>
+                <th className="px-6 py-4">Title / Location</th>
                 <th className="px-6 py-4">Price (KES)</th>
                 <th className="px-6 py-4">Type</th>
                 <th className="px-6 py-4">Status</th>
@@ -150,57 +150,57 @@ export default function PropertiesManagement() {
               {loading ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center text-slate-400">
-                    Loading properties...
+                    Loading items...
                   </td>
                 </tr>
-              ) : filteredProperties.length === 0 ? (
+              ) : filteredItems.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center text-slate-400">
-                    No properties found
+                    No items found
                   </td>
                 </tr>
               ) : (
-                filteredProperties.map((property) => (
-                  <tr key={property.id} className="hover:bg-emerald-50/30 transition-colors">
+                filteredItems.map((item) => (
+                  <tr key={item.id} className="hover:bg-emerald-50/30 transition-colors">
                     <td className="px-6 py-4">
-                      <div className="font-bold text-[#01452c]">{property.title}</div>
-                      <div className="text-xs text-slate-400 mt-0.5">{property.estate?.name || "No Estate"}</div>
+                      <div className="font-bold text-[#01452c]">{item.title}</div>
+                      <div className="text-xs text-slate-400 mt-0.5">{item.location?.name || "No Location"}</div>
                     </td>
                     <td className="px-6 py-4 font-semibold text-slate-700">
-                      {property.price.toLocaleString()}
+                      {item.price.toLocaleString()}
                     </td>
                     <td className="px-6 py-4">
                       <span className="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full text-xs font-semibold border border-slate-200">
-                        {property.roomType.replace("_", " ")}
+                        {item.condition.replace("_", " ")}
                       </span>
                     </td>
                     <td className="px-6 py-4">
                       <span
                         className={`px-2.5 py-1 rounded-full text-xs font-bold ${
-                          property.availability === "VACANT"
+                          item.availability === "VACANT"
                             ? "bg-emerald-100 text-emerald-700"
                             : "bg-amber-100 text-amber-700"
                         }`}
                       >
-                        {property.availability}
+                        {item.availability}
                       </span>
                     </td>
                     <td className="px-6 py-4 text-slate-500 text-xs">
-                      {new Date(property.createdAt).toLocaleDateString()}
+                      {new Date(item.createdAt).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <button
-                          onClick={() => openEdit(property)}
+                          onClick={() => openEdit(item)}
                           className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                          title="Edit property"
+                          title="Edit item"
                         >
                           <Edit2 className="w-4 h-4" />
                         </button>
                         <button
-                          onClick={() => handleDelete(property.id)}
+                          onClick={() => handleDelete(item.id)}
                           className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                          title="Delete property"
+                          title="Delete item"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -215,7 +215,7 @@ export default function PropertiesManagement() {
       </div>
 
       {/* ── Edit Modal ──────────────────────────────────────────── */}
-      {editingProperty && (
+      {editingItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
           <div
@@ -228,8 +228,8 @@ export default function PropertiesManagement() {
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-xl font-extrabold text-[#01452c]">Edit Property</h2>
-                <p className="text-xs text-slate-400 mt-0.5">Update property details</p>
+                <h2 className="text-xl font-extrabold text-[#01452c]">Edit Item</h2>
+                <p className="text-xs text-slate-400 mt-0.5">Update item details</p>
               </div>
               <button
                 onClick={closeEdit}

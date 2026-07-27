@@ -8,7 +8,7 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class CreateEstateDto {
+export class CreateLocationDto {
   @IsString()
   @IsNotEmpty()
   name: string;

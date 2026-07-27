@@ -10,15 +10,15 @@ import {
   Min,
 } from 'class-validator';
 import { Type, Transform } from 'class-transformer';
-import { Availability, RoomType } from '@prisma/client';
+import { Availability, Condition } from '@prisma/client';
 
-export class CreateHouseDto {
+export class CreateItemDto {
   @IsString()
   @IsNotEmpty()
   title: string;
 
   @IsUUID()
-  estateId: string;
+  locationId: string;
 
   @IsOptional()
   @IsString()
@@ -46,8 +46,8 @@ export class CreateHouseDto {
   @Min(0)
   deposit: number;
 
-  @IsEnum(RoomType)
-  roomType: RoomType;
+  @IsEnum(Condition)
+  condition: Condition;
 
   @IsOptional()
   @IsString()

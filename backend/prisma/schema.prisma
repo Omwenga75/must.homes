@@ -9,11 +9,11 @@ datasource db {
 enum Role {
   STUDENT
   ADMIN
-  LANDLORD
+  SELLER
   CARETAKER
 }
 
-enum RoomType {
+enum Condition {
   SINGLE_ROOM
   BEDSITTER
   ONE_BEDROOM
@@ -26,7 +26,7 @@ enum Availability {
   RESERVED
 }
 
-enum BookingStatus {
+enum OrderStatus {
   PENDING
   CONFIRMED
   CANCELLED
@@ -53,7 +53,7 @@ model User {
   updatedAt      DateTime       @updatedAt
 
   // Relations
-  bookings       Booking[]
+  orders       Order[]
   reviews        Review[]
   favorites      Favorite[]
   notifications  Notification[]
@@ -63,7 +63,7 @@ model User {
   auditLogs      AuditLog[]
 }
 
-model Estate {
+model Location {
   id              String   @id @default(uuid())
   name            String   @unique
   description     String?
@@ -71,21 +71,21 @@ model Estate {
   longitude       Float?
   averageDistance String?
   
-  houses          House[]
+  items          Item[]
 }
 
-model House {
+model Item {
   id                  String       @id @default(uuid())
   title               String
-  estateId            String
-  estate              Estate       @relation(fields: [estateId], references: [id])
+  locationId            String
+  location              Location       @relation(fields: [locationId], references: [id])
   caretakerName       String?
   caretakerPhone      String?
   caretakerWhatsApp   String?
   description         String?
   price               Float
   deposit             Float
-  roomType            RoomType
+  condition            Condition
   size                String?      // e.g. "10x10 sqft"
   amenities           String[]     // e.g. ["WiFi", "Water", "Electricity"]
   photos              String[]
@@ -99,19 +99,19 @@ model House {
   createdAt           DateTime     @default(now())
   updatedAt           DateTime     @updatedAt
 
-  bookings            Booking[]
+  orders            Order[]
   reviews             Review[]
   favorites           Favorite[]
 }
 
-model Booking {
+model Order {
   id             String        @id @default(uuid())
-  bookingNumber  String        @unique
+  orderNumber  String        @unique
   userId         String
   user           User          @relation(fields: [userId], references: [id])
-  houseId        String
-  house          House         @relation(fields: [houseId], references: [id])
-  status         BookingStatus @default(PENDING)
+  itemId        String
+  item          Item         @relation(fields: [itemId], references: [id])
+  status         OrderStatus @default(PENDING)
   expiresAt      DateTime
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
@@ -122,8 +122,8 @@ model Booking {
 model Payment {
   id             String        @id @default(uuid())
   transactionRef String        @unique // e.g. M-Pesa receipt number
-  bookingId      String        @unique
-  booking        Booking       @relation(fields: [bookingId], references: [id])
+  orderId      String        @unique
+  order        Order       @relation(fields: [orderId], references: [id])
   amount         Float
   status         PaymentStatus @default(PENDING)
   paymentMethod  String        @default("MPESA")
@@ -135,8 +135,8 @@ model Review {
   id        String   @id @default(uuid())
   userId    String
   user      User     @relation(fields: [userId], references: [id])
-  houseId   String
-  house     House    @relation(fields: [houseId], references: [id])
+  itemId   String
+  item     Item    @relation(fields: [itemId], references: [id])
   rating    Int      @default(5)
   comments  String?
   photos    String[]
@@ -147,11 +147,11 @@ model Favorite {
   id        String   @id @default(uuid())
   userId    String
   user      User     @relation(fields: [userId], references: [id])
-  houseId   String
-  house     House    @relation(fields: [houseId], references: [id])
+  itemId   String
+  item     Item    @relation(fields: [itemId], references: [id])
   createdAt DateTime @default(now())
 
-  @@unique([userId, houseId])
+  @@unique([userId, itemId])
 }
 
 model Notification {

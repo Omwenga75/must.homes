@@ -8,7 +8,7 @@ import api from "@/lib/api";
 const links = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/properties", label: "Properties", icon: Building },
-  { href: "/admin/bookings", label: "Bookings", icon: Calendar },
+  { href: "/admin/orders", label: "Orders", icon: Calendar },
   { href: "/admin/users", label: "Users", icon: Users },
   { href: "/admin/settings", label: "Settings", icon: Settings },
 ];

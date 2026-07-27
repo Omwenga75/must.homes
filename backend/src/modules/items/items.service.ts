@@ -5,19 +5,19 @@ import {
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from '../../prisma/prisma.service';
-import { CreateHouseDto } from './dto/create-house.dto';
-import { QueryHousesDto } from './dto/query-houses.dto';
+import { CreateItemDto } from './dto/create-item.dto';
+import { QueryItemsDto } from './dto/query-items.dto';
 
 @Injectable()
-export class HousesService {
+export class ItemsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async findAll(query: QueryHousesDto) {
+  async findAll(query: QueryItemsDto) {
     const {
-      estate,
+      location,
       minPrice,
       maxPrice,
-      roomType,
+      condition,
       maxDistance,
       amenities,
       availability,
@@ -29,13 +29,13 @@ export class HousesService {
       sortOrder = 'desc',
     } = query;
 
-    const where: Prisma.HouseWhereInput = {};
+    const where: Prisma.ItemWhereInput = {};
 
-    if (estate) {
-      where.estate = {
+    if (location) {
+      where.location = {
         OR: [
-          { id: estate },
-          { name: { contains: estate, mode: 'insensitive' } },
+          { id: location },
+          { name: { contains: location, mode: 'insensitive' } },
         ],
       };
     }
@@ -46,8 +46,8 @@ export class HousesService {
       if (maxPrice !== undefined) (where.price as Prisma.FloatFilter).lte = maxPrice;
     }
 
-    if (roomType) {
-      where.roomType = roomType;
+    if (condition) {
+      where.condition = condition;
     }
 
     if (maxDistance !== undefined) {
@@ -71,21 +71,21 @@ export class HousesService {
         { title: { contains: search, mode: 'insensitive' } },
         { description: { contains: search, mode: 'insensitive' } },
         { caretakerName: { contains: search, mode: 'insensitive' } },
-        { estate: { name: { contains: search, mode: 'insensitive' } } },
+        { location: { name: { contains: search, mode: 'insensitive' } } },
       ];
     }
 
     const skip = (page - 1) * limit;
-    const orderBy: Prisma.HouseOrderByWithRelationInput = {
+    const orderBy: Prisma.ItemOrderByWithRelationInput = {
       [sortBy]: sortOrder,
     };
 
-    const [total, houses] = await this.prisma.$transaction([
-      this.prisma.house.count({ where }),
-      this.prisma.house.findMany({
+    const [total, items] = await this.prisma.$transaction([
+      this.prisma.item.count({ where }),
+      this.prisma.item.findMany({
         where,
         include: {
-          estate: { select: { id: true, name: true, averageDistance: true } },
+          location: { select: { id: true, name: true, averageDistance: true } },
           _count: { select: { reviews: true, favorites: true } },
         },
         skip,
@@ -95,7 +95,7 @@ export class HousesService {
     ]);
 
     return {
-      data: houses,
+      data: items,
       meta: {
         total,
         page,
@@ -108,10 +108,10 @@ export class HousesService {
   }
 
   async findById(id: string) {
-    const house = await this.prisma.house.findUnique({
+    const item = await this.prisma.item.findUnique({
       where: { id },
       include: {
-        estate: true,
+        location: true,
         reviews: {
           include: {
             user: { select: { id: true, firstName: true, lastName: true } },
@@ -124,82 +124,82 @@ export class HousesService {
       },
     });
 
-    if (!house) {
-      throw new NotFoundException(`House with id "${id}" not found`);
+    if (!item) {
+      throw new NotFoundException(`Item with id "${id}" not found`);
     }
 
     const avgRating =
-      house.reviews.length > 0
-        ? house.reviews.reduce((sum, r) => sum + r.rating, 0) / house.reviews.length
+      item.reviews.length > 0
+        ? item.reviews.reduce((sum, r) => sum + r.rating, 0) / item.reviews.length
         : null;
 
-    return { ...house, averageRating: avgRating };
+    return { ...item, averageRating: avgRating };
   }
 
-  async create(dto: CreateHouseDto) {
-    const estate = await this.prisma.estate.findUnique({
-      where: { id: dto.estateId },
+  async create(dto: CreateItemDto) {
+    const location = await this.prisma.location.findUnique({
+      where: { id: dto.locationId },
     });
 
-    if (!estate) {
-      throw new NotFoundException(`Estate with id "${dto.estateId}" not found`);
+    if (!location) {
+      throw new NotFoundException(`Location with id "${dto.locationId}" not found`);
     }
 
-    return this.prisma.house.create({
+    return this.prisma.item.create({
       data: {
         ...dto,
         amenities: dto.amenities ?? [],
         photos: [],
       },
-      include: { estate: { select: { id: true, name: true } } },
+      include: { location: { select: { id: true, name: true } } },
     });
   }
 
-  async update(id: string, dto: Partial<CreateHouseDto>) {
+  async update(id: string, dto: Partial<CreateItemDto>) {
     await this.findById(id);
 
-    if (dto.estateId) {
-      const estate = await this.prisma.estate.findUnique({
-        where: { id: dto.estateId },
+    if (dto.locationId) {
+      const location = await this.prisma.location.findUnique({
+        where: { id: dto.locationId },
       });
-      if (!estate) {
-        throw new NotFoundException(`Estate with id "${dto.estateId}" not found`);
+      if (!location) {
+        throw new NotFoundException(`Location with id "${dto.locationId}" not found`);
       }
     }
 
-    return this.prisma.house.update({
+    return this.prisma.item.update({
       where: { id },
       data: dto,
-      include: { estate: { select: { id: true, name: true } } },
+      include: { location: { select: { id: true, name: true } } },
     });
   }
 
   async delete(id: string) {
     await this.findById(id);
-    await this.prisma.house.delete({ where: { id } });
-    return { message: `House "${id}" deleted successfully` };
+    await this.prisma.item.delete({ where: { id } });
+    return { message: `Item "${id}" deleted successfully` };
   }
 
-  async addToFavorites(userId: string, houseId: string) {
-    await this.findById(houseId);
+  async addToFavorites(userId: string, itemId: string) {
+    await this.findById(itemId);
 
     const existing = await this.prisma.favorite.findUnique({
-      where: { userId_houseId: { userId, houseId } },
+      where: { userId_itemId: { userId, itemId } },
     });
 
     if (existing) {
-      throw new BadRequestException('House is already in favorites');
+      throw new BadRequestException('Item is already in favorites');
     }
 
     return this.prisma.favorite.create({
-      data: { userId, houseId },
-      include: { house: { select: { id: true, title: true } } },
+      data: { userId, itemId },
+      include: { item: { select: { id: true, title: true } } },
     });
   }
 
-  async removeFromFavorites(userId: string, houseId: string) {
+  async removeFromFavorites(userId: string, itemId: string) {
     const existing = await this.prisma.favorite.findUnique({
-      where: { userId_houseId: { userId, houseId } },
+      where: { userId_itemId: { userId, itemId } },
     });
 
     if (!existing) {
@@ -207,7 +207,7 @@ export class HousesService {
     }
 
     await this.prisma.favorite.delete({
-      where: { userId_houseId: { userId, houseId } },
+      where: { userId_itemId: { userId, itemId } },
     });
 
     return { message: 'Removed from favorites' };
@@ -217,9 +217,9 @@ export class HousesService {
     const favorites = await this.prisma.favorite.findMany({
       where: { userId },
       include: {
-        house: {
+        item: {
           include: {
-            estate: { select: { id: true, name: true } },
+            location: { select: { id: true, name: true } },
             _count: { select: { reviews: true, favorites: true } },
           },
         },
@@ -227,14 +227,14 @@ export class HousesService {
       orderBy: { createdAt: 'desc' },
     });
 
-    return favorites.map((f) => f.house);
+    return favorites.map((f) => f.item);
   }
 
   async getFeatured() {
-    return this.prisma.house.findMany({
+    return this.prisma.item.findMany({
       where: { featured: true, availability: 'VACANT' },
       include: {
-        estate: { select: { id: true, name: true, averageDistance: true } },
+        location: { select: { id: true, name: true, averageDistance: true } },
         _count: { select: { reviews: true, favorites: true } },
       },
       orderBy: { createdAt: 'desc' },
@@ -242,13 +242,13 @@ export class HousesService {
   }
 
   async getNearby(maxDistance: number) {
-    return this.prisma.house.findMany({
+    return this.prisma.item.findMany({
       where: {
         distanceMainGate: { lte: maxDistance },
         availability: 'VACANT',
       },
       include: {
-        estate: { select: { id: true, name: true } },
+        location: { select: { id: true, name: true } },
         _count: { select: { reviews: true } },
       },
       orderBy: { distanceMainGate: 'asc' },
@@ -256,11 +256,11 @@ export class HousesService {
   }
 
   async uploadPhotos(id: string, urls: string[]) {
-    const house = await this.findById(id);
+    const item = await this.findById(id);
 
-    const updatedPhotos = [...house.photos, ...urls];
+    const updatedPhotos = [...item.photos, ...urls];
 
-    return this.prisma.house.update({
+    return this.prisma.item.update({
       where: { id },
       data: { photos: updatedPhotos },
     });

@@ -40,7 +40,7 @@ export function middleware(request: NextRequest) {
   // Check protected routes
   const isStudentRoute =
     pathname.startsWith("/student") ||
-    pathname.startsWith("/houses") ||
+    pathname.startsWith("/items") ||
     pathname.startsWith("/(dashboard)/student");
   const isAdminRoute =
     pathname.startsWith("/admin") ||
@@ -83,7 +83,7 @@ export function middleware(request: NextRequest) {
   // Admin route — require admin role
   if (isAdminRoute && userRole !== "ADMIN") {
     // Redirect non-admin users to student dashboard
-    return NextResponse.redirect(new URL("/houses", request.url));
+    return NextResponse.redirect(new URL("/items", request.url));
   }
 
   // Student route — admin can also access (optional: restrict if needed)

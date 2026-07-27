@@ -17,19 +17,19 @@ import {
 } from "recharts";
 
 const data = [
-  { name: "Jan", revenue: 4000, bookings: 24 },
-  { name: "Feb", revenue: 3000, bookings: 13 },
-  { name: "Mar", revenue: 2000, bookings: 98 },
-  { name: "Apr", revenue: 2780, bookings: 39 },
-  { name: "May", revenue: 1890, bookings: 48 },
-  { name: "Jun", revenue: 2390, bookings: 38 },
-  { name: "Jul", revenue: 3490, bookings: 43 },
+  { name: "Jan", revenue: 4000, orders: 24 },
+  { name: "Feb", revenue: 3000, orders: 13 },
+  { name: "Mar", revenue: 2000, orders: 98 },
+  { name: "Apr", revenue: 2780, orders: 39 },
+  { name: "May", revenue: 1890, orders: 48 },
+  { name: "Jun", revenue: 2390, orders: 38 },
+  { name: "Jul", revenue: 3490, orders: 43 },
 ];
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
-    properties: 0,
-    bookings: 0,
+    items: 0,
+    orders: 0,
     users: 0,
     revenue: 0,
   });
@@ -39,21 +39,21 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        // Fetch properties (public)
-        const housesRes = await api.get("/houses");
-        const houses = housesRes.data?.data || housesRes.data || [];
+        // Fetch items (public)
+        const itemsRes = await api.get("/items");
+        const items = itemsRes.data?.data || itemsRes.data || [];
         
         // Attempt to fetch other stats (requires auth, so might fail if not admin, but we are connecting to backend as requested)
         // Since we don't have a specific /stats endpoint, we'll try to fetch what we can or mock the ones we can't if auth fails
-        let bookingsCount = 0;
+        let ordersCount = 0;
         let usersCount = 0;
         
         try {
-          const bookingsRes = await api.get("/bookings");
-          bookingsCount = (bookingsRes.data?.data || bookingsRes.data || []).length;
+          const ordersRes = await api.get("/orders");
+          ordersCount = (ordersRes.data?.data || ordersRes.data || []).length;
         } catch (e) {
-          console.warn("Failed to fetch bookings, maybe not authenticated");
-          bookingsCount = 145; // Mock data if failed
+          console.warn("Failed to fetch orders, maybe not authenticated");
+          ordersCount = 145; // Mock data if failed
         }
         
         try {
@@ -65,8 +65,8 @@ export default function AdminDashboard() {
         }
 
         setStats({
-          properties: houses.length || 42,
-          bookings: bookingsCount,
+          items: items.length || 42,
+          orders: ordersCount,
           users: usersCount,
           revenue: 1250000, // Hardcoded for now without a proper backend revenue endpoint
         });
@@ -96,15 +96,15 @@ export default function AdminDashboard() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <StatCard
-            title="Total Properties"
-            value={stats.properties}
+            title="Total Items"
+            value={stats.items}
             icon={Building}
             trend="+12%"
             trendUp={true}
           />
           <StatCard
-            title="Active Bookings"
-            value={stats.bookings}
+            title="Active Orders"
+            value={stats.orders}
             icon={Calendar}
             trend="+5%"
             trendUp={true}
@@ -143,7 +143,7 @@ export default function AdminDashboard() {
         </div>
 
         <div className="bg-white p-6 rounded-3xl border border-[#01452c]/10 shadow-sm">
-          <h3 className="text-lg font-bold text-slate-800 mb-6">Bookings Trend</h3>
+          <h3 className="text-lg font-bold text-slate-800 mb-6">Orders Trend</h3>
           <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data}>
@@ -151,7 +151,7 @@ export default function AdminDashboard() {
                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} />
                 <Tooltip />
-                <Line type="monotone" dataKey="bookings" stroke="#10b981" strokeWidth={3} dot={{ r: 4, fill: '#10b981' }} activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey="orders" stroke="#10b981" strokeWidth={3} dot={{ r: 4, fill: '#10b981' }} activeDot={{ r: 6 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>

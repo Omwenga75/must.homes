@@ -107,7 +107,7 @@ export default function LoginPage() {
       if (user?.role === "ADMIN") {
         router.push("/admin");
       } else {
-        router.push("/houses");
+        router.push("/items");
       }
     } catch {
       // ── DEMO FALLBACK: backend unreachable → simulate admin login ──

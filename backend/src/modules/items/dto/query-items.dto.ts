@@ -1,11 +1,11 @@
 import { IsEnum, IsNumber, IsOptional, IsString, IsBoolean, IsArray, Min, Max } from 'class-validator';
 import { Type, Transform } from 'class-transformer';
-import { Availability, RoomType } from '@prisma/client';
+import { Availability, Condition } from '@prisma/client';
 
-export class QueryHousesDto {
+export class QueryItemsDto {
   @IsOptional()
   @IsString()
-  estate?: string;
+  location?: string;
 
   @IsOptional()
   @Type(() => Number)
@@ -20,8 +20,8 @@ export class QueryHousesDto {
   maxPrice?: number;
 
   @IsOptional()
-  @IsEnum(RoomType)
-  roomType?: RoomType;
+  @IsEnum(Condition)
+  condition?: Condition;
 
   @IsOptional()
   @Type(() => Number)

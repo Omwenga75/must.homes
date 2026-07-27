@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './modules/users/users.module';
-import { HousesModule } from './modules/houses/houses.module';
+import { ItemsModule } from './modules/items/items.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { BookingsModule } from './modules/bookings/bookings.module';
+import { OrdersModule } from './modules/orders/orders.module';
 
 @Module({
-  imports: [UsersModule, HousesModule, AuthModule, BookingsModule],
+  imports: [UsersModule, ItemsModule, AuthModule, OrdersModule],
   controllers: [AppController],
   providers: [AppService],
 })

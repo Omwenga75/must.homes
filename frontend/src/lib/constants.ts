@@ -2,7 +2,7 @@ export const ESTATES = [
   {
     id: "1",
     name: "Kigari",
-    description: "One of the closest estates to MUST, popular for its affordability and tight-knit community feel.",
+    description: "One of the closest locations to MUST, popular for its affordability and tight-knit community feel.",
     averageDistance: 0.5,
     latitude: 0.0467,
     longitude: 37.6507,
@@ -10,7 +10,7 @@ export const ESTATES = [
   {
     id: "2",
     name: "Makutano",
-    description: "A vibrant market-adjacent estate with excellent transport links and plenty of affordable shops.",
+    description: "A vibrant market-adjacent location with excellent transport links and plenty of affordable shops.",
     averageDistance: 1.2,
     latitude: 0.0484,
     longitude: 37.6523,
@@ -26,7 +26,7 @@ export const ESTATES = [
   {
     id: "4",
     name: "Kiirua",
-    description: "A rapidly growing estate with modern rentals at competitive prices, great road access.",
+    description: "A rapidly growing location with modern rentals at competitive prices, great road access.",
     averageDistance: 2.0,
     latitude: 0.0501,
     longitude: 37.6545,
@@ -34,7 +34,7 @@ export const ESTATES = [
   {
     id: "5",
     name: "Ntima",
-    description: "Peaceful hillside estate offering stunning views and cooler temperatures year-round.",
+    description: "Peaceful hillside location offering stunning views and cooler temperatures year-round.",
     averageDistance: 2.3,
     latitude: 0.0435,
     longitude: 37.6471,
@@ -50,7 +50,7 @@ export const ESTATES = [
   {
     id: "7",
     name: "Igoji",
-    description: "A large estate known for affordable single rooms and bedsitters, ideal for first-year students.",
+    description: "A large location known for affordable single rooms and bedsitters, ideal for first-year students.",
     averageDistance: 3.0,
     latitude: 0.0388,
     longitude: 37.6432,
@@ -58,7 +58,7 @@ export const ESTATES = [
   {
     id: "8",
     name: "Mitunguu",
-    description: "Busy commercial estate with 24-hour activity, shops, and excellent matatu connections to MUST.",
+    description: "Busy commercial location with 24-hour activity, shops, and excellent matatu connections to MUST.",
     averageDistance: 3.5,
     latitude: 0.0547,
     longitude: 37.6598,
@@ -74,7 +74,7 @@ export const ESTATES = [
   {
     id: "10",
     name: "Kibirichia",
-    description: "Quiet farming community estate offering the most spacious rentals and lowest prices around MUST.",
+    description: "Quiet farming community location offering the most spacious rentals and lowest prices around MUST.",
     averageDistance: 4.5,
     latitude: 0.0572,
     longitude: 37.6621,
@@ -82,7 +82,7 @@ export const ESTATES = [
   {
     id: "11",
     name: "Timau",
-    description: "High-altitude estate on the slopes of Mt. Kenya, cool climate and fresh produce market nearby.",
+    description: "High-altitude location on the slopes of Mt. Kenya, cool climate and fresh produce market nearby.",
     averageDistance: 5.0,
     latitude: 0.0612,
     longitude: 37.6659,
@@ -98,7 +98,7 @@ export const ESTATES = [
   {
     id: "13",
     name: "Mwanganthia",
-    description: "Upcoming residential estate with newly built modern apartments, great value for money.",
+    description: "Upcoming residential location with newly built modern apartments, great value for money.",
     averageDistance: 1.8,
     latitude: 0.0493,
     longitude: 37.6537,
@@ -106,7 +106,7 @@ export const ESTATES = [
   {
     id: "14",
     name: "Kinoro",
-    description: "Lush green estate on the university periphery, popular for its spacious compounds and parking.",
+    description: "Lush green location on the university periphery, popular for its spacious compounds and parking.",
     averageDistance: 0.8,
     latitude: 0.0461,
     longitude: 37.6513,

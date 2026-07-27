@@ -14,22 +14,22 @@ export interface User {
   createdAt: string;
 }
 
-// ─── Estate ──────────────────────────────────────────────────────────────────
+// ─── Location ──────────────────────────────────────────────────────────────────
 
-export interface Estate {
+export interface Location {
   id: string;
   name: string;
   description: string;
   averageDistance: number;   // km from MUST main gate
   latitude: number;
   longitude: number;
-  houseCount?: number;
+  itemCount?: number;
   imageUrl?: string;
 }
 
-// ─── House ───────────────────────────────────────────────────────────────────
+// ─── Item ───────────────────────────────────────────────────────────────────
 
-export type RoomType =
+export type Condition =
   | "single_room"
   | "double_room"
   | "bedsitter"
@@ -40,14 +40,14 @@ export type RoomType =
 
 export type AvailabilityStatus = "available" | "occupied" | "reserved";
 
-export interface House {
+export interface Item {
   id: string;
   title: string;
   description: string;
-  estate: Estate | string;           // populated or ID
+  location: Location | string;           // populated or ID
   price: number;                     // monthly rent in KES
   deposit: number;                   // deposit in KES
-  roomType: RoomType;
+  condition: Condition;
   amenities: string[];               // array of amenity IDs
   photos: string[];                  // array of image URLs
   videoUrl?: string;
@@ -83,23 +83,23 @@ export interface Payment {
   createdAt: string;
 }
 
-// ─── Booking ─────────────────────────────────────────────────────────────────
+// ─── Order ─────────────────────────────────────────────────────────────────
 
-export type BookingStatus =
+export type OrderStatus =
   | "pending"
   | "confirmed"
   | "active"
   | "expired"
   | "cancelled";
 
-export interface Booking {
+export interface Order {
   id: string;
-  bookingNumber: string;
-  houseId: string;
-  house: House;
+  orderNumber: string;
+  itemId: string;
+  item: Item;
   userId: string;
   user?: User;
-  status: BookingStatus;
+  status: OrderStatus;
   expiresAt: string;
   createdAt: string;
   updatedAt?: string;
@@ -112,7 +112,7 @@ export interface Review {
   id: string;
   userId: string;
   user: Pick<User, "id" | "firstName" | "lastName" | "avatar">;
-  houseId: string;
+  itemId: string;
   rating: number;         // 1–5
   comments: string;
   photos?: string[];
@@ -127,15 +127,15 @@ export interface Notification {
   title: string;
   message: string;
   read: boolean;
-  type: "booking" | "payment" | "system" | "review";
+  type: "order" | "payment" | "system" | "review";
   createdAt: string;
 }
 
 // ─── Filters ─────────────────────────────────────────────────────────────────
 
-export interface HouseFilters {
-  estate?: string;
-  roomType?: RoomType;
+export interface ItemFilters {
+  location?: string;
+  condition?: Condition;
   minPrice?: number;
   maxPrice?: number;
   maxDistance?: number;
