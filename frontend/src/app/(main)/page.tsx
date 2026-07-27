@@ -306,69 +306,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-           FEATURES
-      ═══════════════════════════════════════════════ */}
-      <section id="features" className="py-24 px-6 sm:px-8 bg-[#f0fbf5]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-3">
-            <h2 className="text-4xl font-extrabold text-[#01452c]">Everything You Need</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((f) => (
-              <div
-                key={f.title}
-                className="group bg-white rounded-3xl p-8 shadow-sm border border-[#01452c]/8 hover:shadow-xl hover:shadow-emerald-900/10 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className={`w-12 h-12 rounded-2xl ${f.color} flex items-center justify-center mb-5`}>
-                  <f.icon className={`w-6 h-6 ${f.iconColor}`} />
-                </div>
-                <h3 className="text-lg font-bold text-[#01452c] mb-2">{f.title}</h3>
-                <p className="text-[#2a6650]/70 text-sm leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-           TESTIMONIALS
-      ═══════════════════════════════════════════════ */}
-      <section id="about" className="py-24 px-6 sm:px-8 bg-[#01452c] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5"
-          style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "40px 40px" }}
-        />
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-14 space-y-3">
-            <h2 className="text-4xl font-extrabold text-white">What Our Students Say</h2>
-            <p className="text-white/50 max-w-xl mx-auto">
-              Thousands of MUST students found what they needed here. Here&apos;s what they think.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <div key={t.author} className="bg-white/5 border border-white/10 rounded-3xl p-8 space-y-5 hover:bg-white/10 transition-colors">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-white/80 text-sm leading-relaxed italic">&ldquo;{t.text}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.gradient} flex items-center justify-center text-white text-sm font-bold flex-shrink-0`}>
-                    {t.initials}
-                  </div>
-                  <div>
-                    <div className="text-white text-sm font-bold">{t.author}</div>
-                    <div className="text-white/40 text-xs">{t.course}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
 
       {/* ═══════════════════════════════════════════════
            CTA
