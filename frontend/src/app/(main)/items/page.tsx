@@ -185,14 +185,7 @@ export default function ItemsPage() {
     <div className="min-h-screen bg-[#f0fbf5]">
       {showOrderModal && <OrderModal onClose={() => setShowOrderModal(false)} />}
 
-      {/* Page Header */}
-      <div className="bg-[#01452c] py-10 px-6 sm:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white">
-            New Items
-          </h1>
-        </div>
-      </div>
+
 
       {/* Items Grid */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12">

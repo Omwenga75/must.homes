@@ -97,15 +97,7 @@ export default function SecondHandPage() {
   return (
     <div className="min-h-screen bg-[#fffbf0]">
 
-      {/* Page Header */}
-      <div className="bg-amber-600 py-10 px-6 sm:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-2">
-            Second Hand Items
-          </h1>
-          <p className="text-white/70 text-sm">Quality used items at student-friendly prices</p>
-        </div>
-      </div>
+
 
       {/* Items Grid */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12">
