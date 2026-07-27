@@ -3,17 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import {
-  Search,
-  MapPin,
-  Wifi,
-  Car,
-  Zap,
-  Droplets,
-  Star,
-  SlidersHorizontal,
-  ChevronDown,
   X,
-  ArrowRight,
   Home,
   LogIn,
   Phone,
@@ -148,23 +138,6 @@ const items = [
   },
 ];
 
-const amenityIcons: Record<string, React.ReactNode> = {
-  wifi: <Wifi className="w-3.5 h-3.5" />,
-  water: <Droplets className="w-3.5 h-3.5" />,
-  electricity: <Zap className="w-3.5 h-3.5" />,
-  parking: <Car className="w-3.5 h-3.5" />,
-};
-
-const amenityLabels: Record<string, string> = {
-  wifi: "WiFi",
-  water: "Water",
-  electricity: "Electricity",
-  parking: "Parking",
-};
-
-const locations = ["All Locations", "Kiharu Location", "Makuyu Location", "Muiri Location", "Town Center"];
-const priceRanges = ["Any Price", "Under KES 3,500", "KES 3,500–6,000", "KES 6,000–9,000", "Above KES 9,000"];
-
 function OrderModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
@@ -206,41 +179,7 @@ function OrderModal({ onClose }: { onClose: () => void }) {
 }
 
 export default function ItemsPage() {
-  const [search, setSearch] = useState("");
-  const [selectedLocation, setSelectedLocation] = useState("All Locations");
-  const [selectedPrice, setSelectedPrice] = useState("Any Price");
-  const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
-  const [showFilters, setShowFilters] = useState(false);
   const [showOrderModal, setShowOrderModal] = useState(false);
-
-  const toggleAmenity = (a: string) =>
-    setSelectedAmenities((prev) =>
-      prev.includes(a) ? prev.filter((x) => x !== a) : [...prev, a]
-    );
-
-  const filtered = items.filter((h) => {
-    const matchSearch =
-      h.title.toLowerCase().includes(search.toLowerCase()) ||
-      h.location.toLowerCase().includes(search.toLowerCase());
-    const matchLocation = selectedLocation === "All Locations" || h.location === selectedLocation;
-    const matchAmenities =
-      selectedAmenities.length === 0 ||
-      selectedAmenities.every((a) => h.amenities.includes(a));
-    const matchPrice = (() => {
-      if (selectedPrice === "Any Price") return true;
-      if (selectedPrice === "Under KES 3,500") return h.price < 3500;
-      if (selectedPrice === "KES 3,500–6,000") return h.price >= 3500 && h.price <= 6000;
-      if (selectedPrice === "KES 6,000–9,000") return h.price >= 6000 && h.price <= 9000;
-      if (selectedPrice === "Above KES 9,000") return h.price > 9000;
-      return true;
-    })();
-    return matchSearch && matchLocation && matchAmenities && matchPrice;
-  });
-
-  const hasFilters =
-    selectedAmenities.length > 0 ||
-    selectedPrice !== "Any Price" ||
-    selectedLocation !== "All Locations";
 
   return (
     <div className="min-h-screen bg-[#f0fbf5]">
@@ -249,163 +188,49 @@ export default function ItemsPage() {
       {/* Page Header */}
       <div className="bg-[#01452c] py-10 px-6 sm:px-8">
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white">
             New Items
           </h1>
-
-          {/* Search bar */}
-          <div className="w-full max-w-2xl flex gap-3">
-            <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
-              <input
-                type="text"
-                placeholder="Search by name or location..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 pl-12 pr-4 py-3.5 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400/40 transition"
-              />
-            </div>
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className={`flex items-center gap-2 border px-5 py-3.5 rounded-2xl text-sm font-semibold transition-all ${
-                showFilters || hasFilters
-                  ? "bg-emerald-500 border-emerald-500 text-white"
-                  : "bg-white/10 border-white/20 text-white hover:bg-white/20"
-              }`}
-            >
-              <SlidersHorizontal className="w-4 h-4" />
-              Filters
-              {hasFilters && (
-                <span className="w-5 h-5 rounded-full bg-white text-[#01452c] text-xs font-extrabold flex items-center justify-center">
-                  {selectedAmenities.length + (selectedPrice !== "Any Price" ? 1 : 0) + (selectedLocation !== "All Locations" ? 1 : 0)}
-                </span>
-              )}
-            </button>
-          </div>
         </div>
       </div>
 
-      {/* Filters Panel */}
-      {showFilters && (
-        <div className="bg-white border-b border-[#01452c]/10 px-6 sm:px-8 py-6 shadow-sm">
-          <div className="max-w-7xl mx-auto flex flex-wrap gap-6 items-end justify-center">
-            <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-[#01452c]/50">Location</label>
-              <div className="relative">
-                <select
-                  value={selectedLocation}
-                  onChange={(e) => setSelectedLocation(e.target.value)}
-                  className="appearance-none bg-[#e8f7f2] border border-[#01452c]/15 text-[#01452c] text-sm font-semibold pl-4 pr-10 py-3 rounded-xl focus:outline-none cursor-pointer"
-                >
-                  {locations.map((e) => <option key={e}>{e}</option>)}
-                </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#01452c]/50 pointer-events-none" />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-[#01452c]/50">Price Range</label>
-              <div className="relative">
-                <select
-                  value={selectedPrice}
-                  onChange={(e) => setSelectedPrice(e.target.value)}
-                  className="appearance-none bg-[#e8f7f2] border border-[#01452c]/15 text-[#01452c] text-sm font-semibold pl-4 pr-10 py-3 rounded-xl focus:outline-none cursor-pointer"
-                >
-                  {priceRanges.map((p) => <option key={p}>{p}</option>)}
-                </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#01452c]/50 pointer-events-none" />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-[#01452c]/50">Amenities</label>
-              <div className="flex gap-2 flex-wrap">
-                {["wifi", "water", "electricity", "parking"].map((a) => (
-                  <button
-                    key={a}
-                    onClick={() => toggleAmenity(a)}
-                    className={`flex items-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-xl border transition-all ${
-                      selectedAmenities.includes(a)
-                        ? "bg-[#01452c] text-white border-[#01452c]"
-                        : "bg-[#e8f7f2] text-[#01452c] border-[#01452c]/15 hover:border-[#01452c]/40"
-                    }`}
-                  >
-                    {amenityIcons[a]} {amenityLabels[a]}
-                  </button>
-                ))}
-              </div>
-            </div>
-            {hasFilters && (
-              <button
-                onClick={() => { setSelectedLocation("All Locations"); setSelectedPrice("Any Price"); setSelectedAmenities([]); }}
-                className="flex items-center gap-1.5 text-sm text-[#01452c]/50 hover:text-[#01452c] transition pb-1"
-              >
-                <X className="w-4 h-4" /> Clear all
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-
       {/* Items Grid */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12">
-
-        {filtered.length === 0 ? (
-          <div className="text-center py-24 text-[#01452c]/40 bg-white rounded-3xl border border-[#01452c]/8">
-            <Search className="w-14 h-14 mx-auto mb-4 opacity-20" />
-            <p className="text-xl font-bold text-[#01452c]/50">No items match your filters</p>
-            <p className="text-sm mt-1">Try adjusting your search or clearing filters</p>
-            <button
-              onClick={() => { setSearch(""); setSelectedLocation("All Locations"); setSelectedPrice("Any Price"); setSelectedAmenities([]); }}
-              className="mt-5 text-sm font-semibold text-emerald-600 hover:underline"
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {items.map((item) => (
+            <div
+              key={item.id}
+              className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-[#01452c]/8 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300"
             >
-              Clear all filters
-            </button>
-          </div>
-        ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((item) => (
-              <div
-                key={item.id}
-                className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-[#01452c]/8 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300"
-              >
-                {/* Image */}
-                <div className="relative h-72 overflow-hidden bg-gray-200">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/e2e8f0/01452c?text=No+Image' }}
-                  />
-                  <span className={`absolute top-3 left-3 ${item.tagColor} text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-md`}>
-                    {item.tag}
-                  </span>
-                  <div className="absolute bottom-3 right-3 bg-white text-[#01452c] text-base font-extrabold px-4 py-1.5 rounded-full shadow-md">
-                    KES {item.price.toLocaleString()}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 space-y-4">
-                  <div>
-                    <h3 className="font-bold text-[#01452c] text-lg leading-snug">{item.title}</h3>
-                    <div className="flex items-center gap-2 text-slate-500 text-sm mt-2">
-                      <Phone className="w-4 h-4 flex-shrink-0" />
-                      +254 712 345 678
-                    </div>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {item.amenities.map((a) => (
-                      <span key={a} className="bg-emerald-50 text-emerald-700 text-sm font-medium px-3 py-1 rounded-full">
-                        {amenityLabels[a] || a}
-                      </span>
-                    ))}
-                  </div>
+              {/* Image */}
+              <div className="relative h-72 overflow-hidden bg-gray-200">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/e2e8f0/01452c?text=No+Image' }}
+                />
+                <span className={`absolute top-3 left-3 ${item.tagColor} text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-md`}>
+                  {item.tag}
+                </span>
+                <div className="absolute bottom-3 right-3 bg-white text-[#01452c] text-base font-extrabold px-4 py-1.5 rounded-full shadow-md">
+                  KES {item.price.toLocaleString()}
                 </div>
               </div>
-            ))}
-          </div>
-        )}
+
+              {/* Content */}
+              <div className="p-6 space-y-4">
+                <div>
+                  <h3 className="font-bold text-[#01452c] text-lg leading-snug">{item.title}</h3>
+                  <div className="flex items-center gap-2 text-slate-500 text-sm mt-2">
+                    <Phone className="w-4 h-4 flex-shrink-0" />
+                    +254 712 345 678
+                  </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
 

@@ -47,9 +47,9 @@ const features = [
     iconColor: "text-emerald-600",
   },
   {
-    icon: Wifi,
-    title: "Amenity Filters",
-    desc: "Filter by WiFi, water, electricity, parking, and more to find your perfect match.",
+    icon: CheckCircle,
+    title: "Detailed Filters",
+    desc: "Filter by condition, price, and category to find exactly the items you need.",
     color: "bg-emerald-50",
     iconColor: "text-emerald-600",
   },
@@ -108,7 +108,7 @@ const testimonials = [
     gradient: "from-emerald-400 to-teal-500",
   },
   {
-    text: "I love filtering by amenities. Found a studio with WiFi, water and parking within my budget!",
+    text: "I love the detailed filters. Found a second-hand laptop in excellent condition within my budget!",
     author: "Fatuma A.",
     course: "Business, Year 1",
     initials: "FA",
