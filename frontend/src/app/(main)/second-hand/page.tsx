@@ -108,7 +108,7 @@ export default function SecondHandPage() {
               className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-amber-100 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300"
             >
               {/* Image */}
-              <div className="relative h-72 overflow-hidden bg-gray-200">
+              <div className="h-72 overflow-hidden bg-gray-200">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={item.image}
@@ -116,29 +116,14 @@ export default function SecondHandPage() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/e2e8f0/d97706?text=No+Image' }}
                 />
-                <span className="absolute top-3 left-3 bg-amber-500 text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
-                  {item.tag}
-                </span>
-                <div className="absolute bottom-3 right-3 bg-white text-[#01452c] text-base font-extrabold px-4 py-1.5 rounded-full shadow-md">
-                  KES {item.price.toLocaleString()}
-                </div>
               </div>
 
               {/* Content */}
-              <div className="p-6 space-y-4">
-                <div>
-                  <h3 className="font-bold text-[#01452c] text-lg leading-snug">{item.title}</h3>
-                  <div className="flex items-center gap-2 text-slate-500 text-sm mt-2">
-                    <Phone className="w-4 h-4 flex-shrink-0" />
-                    +254 712 345 678
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {item.tags.map((t) => (
-                    <span key={t} className="bg-amber-50 text-amber-700 text-sm font-medium px-3 py-1 rounded-full">
-                      {t}
-                    </span>
-                  ))}
+              <div className="p-6">
+                <h3 className="font-bold text-[#01452c] text-lg leading-snug">{item.title}</h3>
+                <div className="flex items-center gap-2 text-slate-500 text-sm mt-2">
+                  <Phone className="w-4 h-4 flex-shrink-0" />
+                  +254 712 345 678
                 </div>
               </div>
             </div>
