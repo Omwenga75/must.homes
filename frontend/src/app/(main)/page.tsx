@@ -155,6 +155,33 @@ const featuredItems = [
   },
 ];
 
+const secondHandItems = [
+  {
+    id: 1,
+    title: "Samsung Galaxy A32",
+    price: 12000,
+    tag: "Used - Good",
+    tags: ["Minor Scratches", "Battery 85%"],
+    image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&q=80",
+  },
+  {
+    id: 2,
+    title: "HP Pavilion Laptop (i5)",
+    price: 28000,
+    tag: "Used - Excellent",
+    tags: ["8GB RAM", "256GB SSD"],
+    image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80",
+  },
+  {
+    id: 3,
+    title: "Engineering Drawing Kit",
+    price: 800,
+    tag: "Used - Good",
+    tags: ["Complete Set", "Year 1"],
+    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80",
+  },
+];
+
 export default function HomePage() {
   return (
     <div className="overflow-hidden bg-[#fafafa]">
@@ -213,15 +240,15 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-           FEATURED ITEMS
+           NEW ITEMS
       ═══════════════════════════════════════════════ */}
       <section className="py-24 px-6 sm:px-8 bg-[#f0fbf5]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center text-center gap-4 mb-12">
             <div className="space-y-2">
-              <h2 className="text-4xl font-extrabold text-[#01452c]">Featured Items</h2>
+              <h2 className="text-4xl font-extrabold text-[#01452c]">New Items</h2>
               <p className="text-[#2a6650]/70 max-w-xl mx-auto">
-                Top-rated, verified items that students love. No login needed to browse.
+                Brand new items listed by verified sellers. No login needed to browse.
               </p>
             </div>
           </div>
@@ -233,7 +260,7 @@ export default function HomePage() {
                 href="/items"
                 className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-[#01452c]/8 hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-2 transition-all duration-300"
               >
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-72 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.image}
@@ -271,7 +298,74 @@ export default function HomePage() {
               href="/items"
               className="inline-flex items-center gap-2 bg-[#01452c] hover:bg-[#023120] text-white px-10 py-4 rounded-2xl font-bold shadow-xl shadow-[#01452c]/20 transition-all hover:scale-105 active:scale-95"
             >
-              Explore All 500+ Items
+              Explore All New Items
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+           SECOND HAND ITEMS
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 sm:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col items-center text-center gap-4 mb-12">
+            <div className="space-y-2">
+              <span className="inline-block bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Pre-owned</span>
+              <h2 className="text-4xl font-extrabold text-[#01452c]">Second Hand Items</h2>
+              <p className="text-[#2a6650]/70 max-w-xl mx-auto">
+                Quality used items at student-friendly prices. Great deals from fellow students.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {secondHandItems.map((item) => (
+              <Link
+                key={item.id}
+                href="/second-hand"
+                className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-amber-100 hover:shadow-2xl hover:shadow-amber-900/10 hover:-translate-y-2 transition-all duration-300"
+              >
+                <div className="relative h-72 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <span className="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                    {item.tag}
+                  </span>
+                  <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur text-[#01452c] text-sm font-extrabold px-3 py-1.5 rounded-full">
+                    KES {item.price.toLocaleString()}
+                  </div>
+                </div>
+                <div className="p-5 space-y-3">
+                  <h3 className="font-bold text-[#01452c] text-base leading-snug">{item.title}</h3>
+                  <div className="flex items-center gap-1 text-[#2a6650]/60 text-sm">
+                    <Phone className="w-3.5 h-3.5" />
+                    +254 712 345 678
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {item.tags.map((a) => (
+                      <span key={a} className="bg-amber-50 text-amber-700 text-xs font-medium px-2.5 py-1 rounded-full">
+                        {a}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/second-hand"
+              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-white px-10 py-4 rounded-2xl font-bold shadow-xl shadow-amber-900/20 transition-all hover:scale-105 active:scale-95"
+            >
+              Explore All Second Hand Items
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -345,8 +439,8 @@ export default function HomePage() {
             &copy; {new Date().getFullYear()} Meru University of Science and Technology Student Marketplace.
           </p>
           <div className="flex items-center gap-6 text-sm">
-            <Link href="/items" className="hover:text-white transition-colors">Items</Link>
-            <Link href="/#features" className="hover:text-white transition-colors">Features</Link>
+            <Link href="/items" className="hover:text-white transition-colors">New Items</Link>
+            <Link href="/second-hand" className="hover:text-white transition-colors">Second Hand</Link>
             <Link href="/login" className="hover:text-white transition-colors">Sign In</Link>
           </div>
         </div>
