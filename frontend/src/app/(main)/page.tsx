@@ -12,9 +12,9 @@ import {
   Users,
   Home, ShoppingBag,
   CheckCircle,
-  Phone,
   Mail,
   Clock,
+  Phone,
 } from "lucide-react";
 
 const stats = [
@@ -251,8 +251,8 @@ export default function HomePage() {
                 <div className="p-5 space-y-3">
                   <h3 className="font-bold text-[#01452c] text-base leading-snug">{item.title}</h3>
                   <div className="flex items-center gap-1 text-[#2a6650]/60 text-sm">
-                    <MapPin className="w-3.5 h-3.5" />
-                    {item.location} · {item.distance} from campus
+                    <Phone className="w-3.5 h-3.5" />
+                    +254 712 345 678
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {item.tags.map((a) => (
@@ -260,15 +260,6 @@ export default function HomePage() {
                         {a}
                       </span>
                     ))}
-                  </div>
-                  <div className="flex items-center justify-between pt-1">
-                    <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm font-bold text-[#01452c]">{item.rating}</span>
-                    </div>
-                    <span className="text-sm font-semibold text-emerald-600 group-hover:underline">
-                      View Details →
-                    </span>
                   </div>
                 </div>
               </Link>

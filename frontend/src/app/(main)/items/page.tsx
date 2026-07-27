@@ -16,6 +16,7 @@ import {
   ArrowRight,
   Home,
   LogIn,
+  Phone,
 } from "lucide-react";
 
 const items = [
@@ -396,49 +397,9 @@ export default function ItemsPage() {
                   <div>
                     <h3 className="font-bold text-[#01452c] text-[15px] leading-snug">{item.title}</h3>
                     <div className="flex items-center gap-1.5 text-[#2a6650]/55 text-xs mt-1.5">
-                      <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-                      {item.location} · {item.distance}
+                      <Phone className="w-3.5 h-3.5 flex-shrink-0" />
+                      +254 712 345 678
                     </div>
-                  </div>
-
-                  {/* Amenities */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {item.amenities.map((a) => (
-                      <span
-                        key={a}
-                        className="flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs font-medium px-2.5 py-1 rounded-full"
-                      >
-                        {amenityIcons[a]} {amenityLabels[a]}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Rating */}
-                  <div className="flex items-center gap-1.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-3.5 h-3.5 ${i < Math.floor(item.rating) ? "fill-yellow-400 text-yellow-400" : "fill-gray-100 text-gray-200"}`}
-                      />
-                    ))}
-                    <span className="text-sm font-bold text-[#01452c] ml-0.5">{item.rating}</span>
-                    <span className="text-xs text-[#2a6650]/40">({item.reviews} reviews)</span>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="flex gap-2 pt-1">
-                    <button
-                      onClick={() => setShowOrderModal(true)}
-                      className="flex-1 bg-[#01452c] hover:bg-[#023120] text-white text-sm font-bold py-2.5 rounded-xl transition-all hover:scale-[1.02] active:scale-95"
-                    >
-                      Book Viewing
-                    </button>
-                    <button
-                      onClick={() => setShowOrderModal(true)}
-                      className="flex items-center gap-1 px-4 py-2.5 border border-[#01452c]/20 text-[#01452c] hover:bg-[#e8f7f2] text-sm font-semibold rounded-xl transition-colors"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
                   </div>
                 </div>
               </div>
