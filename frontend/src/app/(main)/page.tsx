@@ -227,7 +227,7 @@ export default function HomePage() {
         {/* Hero BG image continuation */}
         <div className="absolute inset-0 bg-[url('/hero_bg.png')] bg-cover bg-center bg-no-repeat" />
         {/* Dark gradient overlay — heavier than hero so text pops */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#011a10]/80 via-[#011a10]/85 to-[#011a10]/90" />
+        <div className="absolute inset-0 bg-[#022c22]/70" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col items-center text-center">
