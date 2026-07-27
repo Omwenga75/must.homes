@@ -61,11 +61,11 @@ export default function AuthLayout({
         <div className="absolute bottom-0 left-0 w-full px-12 xl:px-16 pb-16 z-20">
           <h1 className="text-5xl xl:text-6xl font-bold text-[#01452c] leading-[1.1] mb-5 tracking-tight">
             Find your <br />
-            <span className="text-emerald-500">perfect room</span> <br />
+            <span className="text-emerald-500">perfect match</span> <br />
             near campus.
           </h1>
           <p className="text-lg text-[#2a6650]/70 font-medium leading-relaxed max-w-sm">
-            Connect with verified landlords, read student reviews, and book your home instantly.
+            Connect with verified sellers, read student reviews, and get what you need instantly.
           </p>
         </div>
 

@@ -35,14 +35,14 @@ const features = [
   {
     icon: MapPin,
     title: "Precise Locations",
-    desc: "See exactly how far each house is from MUST campus, markets, and bus stops.",
+    desc: "See exactly how far each listing is from MUST campus, markets, and bus stops.",
     color: "bg-emerald-50",
     iconColor: "text-emerald-600",
   },
   {
     icon: Star,
     title: "Student Reviews",
-    desc: "Read honest reviews from fellow students who have actually lived in each house.",
+    desc: "Read honest reviews from fellow students who have actually used each listing.",
     color: "bg-emerald-50",
     iconColor: "text-emerald-600",
   },
@@ -56,7 +56,7 @@ const features = [
   {
     icon: Zap,
     title: "Instant Booking",
-    desc: "Book a viewing or secure your room immediately. Connect directly with landlords.",
+    desc: "Book a viewing or secure your item immediately. Connect directly with sellers.",
     color: "bg-emerald-50",
     iconColor: "text-emerald-600",
   },
@@ -72,7 +72,7 @@ const features = [
 const howItWorks = [
   {
     step: "01",
-    title: "Browse Houses",
+    title: "Browse Listings",
     desc: "Explore hundreds of verified listings. Filter by price, location, amenities — no account needed.",
   },
   {
@@ -88,13 +88,13 @@ const howItWorks = [
   {
     step: "04",
     title: "Move In!",
-    desc: "Secure your room with our platform. We&apos;re with you every step of the way.",
+    desc: "Secure your item with our platform. We&apos;re with you every step of the way.",
   },
 ];
 
 const testimonials = [
   {
-    text: "Finding my room near MUST was incredibly easy. I moved in within 3 days of signing up!",
+    text: "Finding what I needed near MUST was incredibly easy. I got it within 3 days of signing up!",
     author: "Aisha K.",
     course: "Computer Science, Year 2",
     initials: "AK",
@@ -347,7 +347,7 @@ export default function HomePage() {
           <div className="text-center mb-14 space-y-3">
             <h2 className="text-4xl font-extrabold text-white">What Our Students Say</h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              Thousands of MUST students found their homes here. Here&apos;s what they think.
+              Thousands of MUST students found what they needed here. Here&apos;s what they think.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -381,7 +381,7 @@ export default function HomePage() {
       <section className="py-24 px-6 sm:px-8 bg-white">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[#01452c]">
-            Ready to Find Your Room?
+            Ready to Find What You Need?
           </h2>
           <p className="text-[#2a6650]/70 text-lg max-w-xl mx-auto">
             Browse freely. Login only when you&apos;re ready to book or contact a landlord.
@@ -425,10 +425,10 @@ export default function HomePage() {
             MUST MARKETPLACE
           </div>
           <p className="text-sm text-center">
-            &copy; {new Date().getFullYear()} Meru University of Science and Technology Student Housing Platform.
+            &copy; {new Date().getFullYear()} Meru University of Science and Technology Student Marketplace.
           </p>
           <div className="flex items-center gap-6 text-sm">
-            <Link href="/houses" className="hover:text-white transition-colors">Houses</Link>
+            <Link href="/houses" className="hover:text-white transition-colors">Items</Link>
             <Link href="/#features" className="hover:text-white transition-colors">Features</Link>
             <Link href="/login" className="hover:text-white transition-colors">Sign In</Link>
           </div>

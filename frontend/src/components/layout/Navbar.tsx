@@ -6,8 +6,8 @@ import { ShoppingBag, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/houses", label: "Houses" },
+  { href: "/", label: "Main" },
+  { href: "/houses", label: "Items" },
   { href: "/#features", label: "Features" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },

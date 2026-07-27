@@ -244,13 +244,13 @@ export default function PropertiesManagement() {
               {/* Title */}
               <div>
                 <label className="block text-sm font-semibold text-[#01452c] mb-1.5">
-                  House Title / Name
+                  Listing Title / Name
                 </label>
                 <input
                   type="text"
                   value={editForm.title}
                   onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
-                  placeholder="e.g. Studio Room in Mwangaza"
+                  placeholder="e.g. Studio Unit in Mwangaza"
                   className="w-full px-4 py-3 border border-emerald-100 bg-[#f0fbf5] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all font-medium"
                 />
               </div>

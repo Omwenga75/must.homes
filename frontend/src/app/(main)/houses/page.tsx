@@ -21,7 +21,7 @@ import {
 const houses = [
   {
     id: 1,
-    title: "Blue House",
+    title: "Blue Bedsitter",
     estate: "Nchiru",
     distance: "0.2 km from campus",
     price: 4500,
@@ -49,7 +49,7 @@ const houses = [
   },
   {
     id: 3,
-    title: "Pink House",
+    title: "Pink Studio",
     estate: "Nchiru",
     distance: "0.1 km from campus",
     price: 6000,
@@ -77,7 +77,7 @@ const houses = [
   },
   {
     id: 5,
-    title: "Single Room, Walking Distance to MUST",
+    title: "Studio Unit, Walking Distance to MUST",
     estate: "Makuyu Estate",
     distance: "0.3 km from campus",
     price: 2800,
@@ -181,7 +181,7 @@ function BookingModal({ onClose }: { onClose: () => void }) {
         <div>
           <h3 className="text-xl font-extrabold text-[#01452c] mb-2">Login to Book a Viewing</h3>
           <p className="text-slate-500 text-sm leading-relaxed">
-            You can browse all houses for free. Create a free account to book viewings, contact landlords, and save your favourite houses.
+            You can browse all listings for free. Create a free account to book viewings, contact sellers, and save your favourites.
           </p>
         </div>
         <div className="flex flex-col gap-3">
@@ -249,7 +249,7 @@ export default function HousesPage() {
       <div className="bg-[#01452c] py-10 px-6 sm:px-8">
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
-            Find Your Perfect Room
+            Find Your Perfect Item
           </h1>
 
           {/* Search bar */}
@@ -348,7 +348,7 @@ export default function HousesPage() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12">
         <div className="flex items-center justify-between mb-8">
           <p className="text-[#01452c]/60 text-sm">
-            <span className="font-bold text-[#01452c] text-base">{filtered.length}</span> house{filtered.length !== 1 && "s"} found
+            <span className="font-bold text-[#01452c] text-base">{filtered.length}</span> item{filtered.length !== 1 && "s"} found
           </p>
           <p className="text-xs text-[#01452c]/40 hidden sm:block">
             Browse freely — login only needed to book
@@ -358,7 +358,7 @@ export default function HousesPage() {
         {filtered.length === 0 ? (
           <div className="text-center py-24 text-[#01452c]/40 bg-white rounded-3xl border border-[#01452c]/8">
             <Search className="w-14 h-14 mx-auto mb-4 opacity-20" />
-            <p className="text-xl font-bold text-[#01452c]/50">No houses match your filters</p>
+            <p className="text-xl font-bold text-[#01452c]/50">No items match your filters</p>
             <p className="text-sm mt-1">Try adjusting your search or clearing filters</p>
             <button
               onClick={() => { setSearch(""); setSelectedEstate("All Estates"); setSelectedPrice("Any Price"); setSelectedAmenities([]); }}
@@ -450,7 +450,7 @@ export default function HousesPage() {
       {/* Bottom CTA */}
       <div className="bg-[#01452c] py-14 px-6 sm:px-8 mt-8">
         <div className="max-w-2xl mx-auto text-center space-y-5">
-          <h3 className="text-2xl font-extrabold text-white">Found a house you love?</h3>
+          <h3 className="text-2xl font-extrabold text-white">Found something you love?</h3>
           <p className="text-white/60">
             Create a free account to book viewings, contact landlords, save favourites, and manage your booking — all in one place.
           </p>
