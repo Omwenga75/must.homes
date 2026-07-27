@@ -179,7 +179,7 @@ export default function HomePage() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 flex flex-col items-center text-center">
           
           {/* Hero Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tighter mb-6 max-w-5xl drop-shadow-sm">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tighter mb-2 max-w-5xl drop-shadow-sm">
             Meru <br className="sm:hidden" />
             University
             {" "}
