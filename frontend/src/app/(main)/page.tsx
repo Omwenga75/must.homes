@@ -188,7 +188,7 @@ export default function HomePage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl md:text-2xl text-emerald-50/80 max-w-2xl leading-relaxed mb-0 font-medium">
+          <p className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md max-w-2xl leading-relaxed mb-0 font-bold">
             Buy And Sell.
           </p>
 
