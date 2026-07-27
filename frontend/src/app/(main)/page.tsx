@@ -196,8 +196,12 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════
            STATS BAR
       ═══════════════════════════════════════════════ */}
-      <section className="bg-[#01452c] py-10 border-y border-[#01452c]">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="relative py-10 overflow-hidden">
+        {/* Hero BG image continuation */}
+        <div className="absolute inset-0 bg-[url('/hero_bg.png')] bg-cover bg-center bg-no-repeat" />
+        {/* Dark gradient overlay — heavier than hero so text pops */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#011a10]/80 via-[#011a10]/85 to-[#011a10]/90" />
+        <div className="relative z-10 max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col items-center text-center">
               <s.icon className="w-6 h-6 text-emerald-400 mb-2" />
