@@ -312,7 +312,6 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center text-center gap-4 mb-12">
             <div className="space-y-2">
-              <span className="inline-block bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Pre-owned</span>
               <h2 className="text-4xl font-extrabold text-[#01452c]">Second Hand Items</h2>
               <p className="text-[#2a6650]/70 max-w-xl mx-auto">
                 Quality used items at student-friendly prices. Great deals from fellow students.

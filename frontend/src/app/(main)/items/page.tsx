@@ -250,7 +250,7 @@ export default function ItemsPage() {
       <div className="bg-[#01452c] py-10 px-6 sm:px-8">
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
-            Find Your Perfect Item
+            New Items
           </h1>
 
           {/* Search bar */}
@@ -373,33 +373,41 @@ export default function ItemsPage() {
             {filtered.map((item) => (
               <div
                 key={item.id}
-                className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-[#01452c]/8 hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-1.5 transition-all duration-300"
+                className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-[#01452c]/8 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300"
               >
                 {/* Image */}
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-72 overflow-hidden bg-gray-200">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/e2e8f0/01452c?text=No+Image' }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <span className={`absolute top-3 left-3 ${item.tagColor} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg`}>
+                  <span className={`absolute top-3 left-3 ${item.tagColor} text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-md`}>
                     {item.tag}
                   </span>
-                  <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur text-[#01452c] text-sm font-extrabold px-3 py-1.5 rounded-full shadow-lg">
-                    KES {item.price.toLocaleString()}<span className="text-xs font-medium text-[#01452c]/50">/mo</span>
+                  <div className="absolute bottom-3 right-3 bg-white text-[#01452c] text-base font-extrabold px-4 py-1.5 rounded-full shadow-md">
+                    KES {item.price.toLocaleString()}
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-5 space-y-3">
+                <div className="p-6 space-y-4">
                   <div>
-                    <h3 className="font-bold text-[#01452c] text-[15px] leading-snug">{item.title}</h3>
-                    <div className="flex items-center gap-1.5 text-[#2a6650]/55 text-xs mt-1.5">
-                      <Phone className="w-3.5 h-3.5 flex-shrink-0" />
+                    <h3 className="font-bold text-[#01452c] text-lg leading-snug">{item.title}</h3>
+                    <div className="flex items-center gap-2 text-slate-500 text-sm mt-2">
+                      <Phone className="w-4 h-4 flex-shrink-0" />
                       +254 712 345 678
                     </div>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {item.amenities.map((a) => (
+                      <span key={a} className="bg-emerald-50 text-emerald-700 text-sm font-medium px-3 py-1 rounded-full">
+                        {amenityLabels[a] || a}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
