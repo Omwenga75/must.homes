@@ -119,8 +119,8 @@ const testimonials = [
 const featuredHouses = [
   {
     id: 1,
-    title: "Modern Studio near MUST Gate A",
-    estate: "Kiharu Estate",
+    title: "Blue House",
+    estate: "Nchiru",
     distance: "0.2 km",
     price: 4500,
     rating: 4.9,
@@ -131,10 +131,10 @@ const featuredHouses = [
   },
   {
     id: 2,
-    title: "1-Bedroom Self Contain with Parking",
-    estate: "Kiharu Estate",
-    distance: "0.4 km",
-    price: 7000,
+    title: "Pink House",
+    estate: "Nchiru",
+    distance: "0.1 km",
+    price: 6000,
     rating: 4.8,
     amenities: ["WiFi", "Water", "Electricity", "Parking"],
     tag: "Verified",
@@ -180,11 +180,11 @@ export default function HomePage() {
           
           {/* Hero Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tighter mb-6 max-w-5xl drop-shadow-sm">
-            Find Your <br className="sm:hidden" />
-            Dream Room
+            Meru <br className="sm:hidden" />
+            University
             {" "}
             <br className="hidden sm:block" />
-            Near MUST
+            Marketplace
           </h1>
 
           {/* Subtitle */}
